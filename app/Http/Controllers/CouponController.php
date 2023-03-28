@@ -54,7 +54,7 @@ class CouponController extends Controller
 
         Coupon::create($data);
 
-        return redirect()->route('coupon.index')->with('success','Kupon berhasil dibuat!');
+        return redirect()->route('coupon.index')->with('success', 'Kupon berhasil dibuat!');
     }
 
     /**
@@ -99,7 +99,7 @@ class CouponController extends Controller
 
         Coupon::findOrFail($id)->update($data);
 
-        return redirect()->route('coupon.index')->with('success','Kupon berhasil diperbarui!');
+        return redirect()->route('coupon.index')->with('success', 'Kupon berhasil diperbarui!');
     }
 
     /**
@@ -112,6 +112,6 @@ class CouponController extends Controller
     {
         Coupon::findOrFail($id)->delete();
 
-        return redirect()->route('coupon.index')->with('success','Kupon berhasil dihapus!');
+        return redirect()->route('coupon.index')->with('success', 'Kupon berhasil dihapus!');
     }
 }

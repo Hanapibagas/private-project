@@ -91,29 +91,30 @@ class ProfileController extends Controller
 
         if ($validator->fails()) {
             return redirect()->route('profile.index')
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $photo = $request->file('photo');
         $password = $request->input('password');
 
-        if ($password){
+        if ($password) {
             $data = $request->all();
             $data['password'] = Hash::make($data['password']);
-        }else{
+        } else {
             $data = $request->except('password');
         }
-        
-        if ($photo){
+
+        if ($photo) {
             $data['photo'] = $photo->store(
-                'assets/user', 'public'
+                'assets/user',
+                'public'
             );
         }
 
         User::findOrFail($id)->update($data);
 
-        return redirect()->route('profile.index')->with('success','Berhasil memperbarui profil');
+        return redirect()->route('profile.index')->with('success', 'Berhasil memperbarui profil');
     }
 
     /**

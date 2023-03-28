@@ -59,12 +59,13 @@ class ProductController extends Controller
         $photo = $request->file('photo');
 
         $data = $request->all();
-        
-        if ($photo){
+
+        if ($photo) {
             $data['photo'] = $photo->store(
-                'assets/product', 'public'
+                'assets/product',
+                'public'
             );
-        }else{
+        } else {
             $data['photo'] = "";
         }
 
@@ -73,7 +74,7 @@ class ProductController extends Controller
 
         Product::create($data);
 
-        return redirect()->route('product.index')->with('success','Produk berhasil ditambahkan!');
+        return redirect()->route('product.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
     /**
@@ -121,16 +122,17 @@ class ProductController extends Controller
         $data = $request->all();
         $data['purchase_price'] = str_replace(',', '', $data['purchase_price']);
         $data['selling_price'] = str_replace(',', '', $data['selling_price']);
-        
-        if ($photo){
+
+        if ($photo) {
             $data['photo'] = $photo->store(
-                'assets/product', 'public'
+                'assets/product',
+                'public'
             );
         }
 
         Product::findOrFail($id)->update($data);
 
-        return redirect()->route('product.index')->with('success','Produk berhasil diperbarui!');
+        return redirect()->route('product.index')->with('success', 'Produk berhasil diperbarui!');
     }
 
     /**
@@ -143,6 +145,6 @@ class ProductController extends Controller
     {
         Product::findOrFail($id)->delete();
 
-        return redirect()->route('product.index')->with('success','Produk berhasil dihapus!');
+        return redirect()->route('product.index')->with('success', 'Produk berhasil dihapus!');
     }
 }

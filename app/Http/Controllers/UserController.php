@@ -54,12 +54,13 @@ class UserController extends Controller
         $photo = $request->file('photo');
 
         $data = $request->all();
-        
-        if ($photo){
+
+        if ($photo) {
             $data['photo'] = $photo->store(
-                'assets/user', 'public'
+                'assets/user',
+                'public'
             );
-        }else{
+        } else {
             $data['photo'] = "";
         }
 
@@ -67,7 +68,7 @@ class UserController extends Controller
 
         User::create($data);
 
-        return redirect()->route('user.index')->with('success','User berhasil dibuat!');
+        return redirect()->route('user.index')->with('success', 'User berhasil dibuat!');
     }
 
     /**
@@ -117,29 +118,30 @@ class UserController extends Controller
 
         if ($validator->fails()) {
             return redirect()->route('user.edit', $id)
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $photo = $request->file('photo');
         $password = $request->input('password');
 
-        if ($password){
+        if ($password) {
             $data = $request->all();
             $data['password'] = Hash::make($data['password']);
-        }else{
+        } else {
             $data = $request->except('password');
         }
-        
-        if ($photo){
+
+        if ($photo) {
             $data['photo'] = $photo->store(
-                'assets/user', 'public'
+                'assets/user',
+                'public'
             );
         }
 
         User::findOrFail($id)->update($data);
 
-        return redirect()->route('user.index')->with('success','User berhasil diperbarui!');
+        return redirect()->route('user.index')->with('success', 'User berhasil diperbarui!');
     }
 
     /**
@@ -151,7 +153,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
-        
-        return redirect()->route('user.index')->with('success','User berhasil dihapus!');
+
+        return redirect()->route('user.index')->with('success', 'User berhasil dihapus!');
     }
 }

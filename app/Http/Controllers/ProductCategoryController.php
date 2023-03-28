@@ -53,7 +53,7 @@ class ProductCategoryController extends Controller
 
         ProductCategory::create($data);
 
-        return redirect()->route('product-category.index')->with('success','Kategori produk berhasil ditambahkan!');
+        return redirect()->route('product-category.index')->with('success', 'Kategori produk berhasil ditambahkan!');
     }
 
     /**
@@ -98,7 +98,7 @@ class ProductCategoryController extends Controller
 
         ProductCategory::findOrFail($id)->update($data);
 
-        return redirect()->route('product-category.index')->with('success','Kategori produk berhasil diperbarui!');
+        return redirect()->route('product-category.index')->with('success', 'Kategori produk berhasil diperbarui!');
     }
 
     /**
@@ -111,6 +111,6 @@ class ProductCategoryController extends Controller
     {
         ProductCategory::findOrFail($id)->delete();
 
-        return redirect()->route('product-category.index')->with('success','Kategori produk berhasil dihapus!');
+        return redirect()->route('product-category.index')->with('success', 'Kategori produk berhasil dihapus!');
     }
 }

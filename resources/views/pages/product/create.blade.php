@@ -24,16 +24,16 @@
                     <div class="card-body">
 
                         @if ($errors->any())
-                            @foreach ($errors->all() as $error)
-                                <div class="alert alert-danger alert-dismissible show fade">
-                                    <div class="alert-body">
-                                        <button class="close" data-dismiss="alert">
-                                        <span>×</span>
-                                        </button>
-                                        {{ $error }}
-                                    </div>
-                                    </div>
-                            @endforeach                  
+                        @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger alert-dismissible show fade">
+                            <div class="alert-body">
+                                <button class="close" data-dismiss="alert">
+                                    <span>×</span>
+                                </button>
+                                {{ $error }}
+                            </div>
+                        </div>
+                        @endforeach
                         @endif
 
                         <div class="row">
@@ -41,11 +41,15 @@
                             <div class="col-lg-2">
                                 <div class="form-group">
                                     <label for="">Pratinjau Foto</label>
-                                    <img src="{{ url('assets/img/image_not_available.png') }}" class="rounded img-responsive" alt="Image Preview" width="100%" id="img-preview">
+                                    <img src="{{ url('assets/img/image_not_available.png') }}"
+                                        class="rounded img-responsive" alt="Image Preview" width="100%"
+                                        id="img-preview">
                                 </div>
                                 <div class="form-group">
                                     <label class="float-right">
-                                        <a href="#" data-toggle="tooltip" title="Klik untuk menghapus foto yang sudah dipilih" style="display:none" id="img-reset">
+                                        <a href="#" data-toggle="tooltip"
+                                            title="Klik untuk menghapus foto yang sudah dipilih" style="display:none"
+                                            id="img-reset">
                                             <code class="text-right">Hapus Foto</code>
                                         </a>
                                     </label>
@@ -58,7 +62,7 @@
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="photo" id="img-file">
                                             <label class="custom-file-label" id="img-name">Pilih Foto</label>
-                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +76,8 @@
                                                 <i class="fas fa-key"></i>
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" name="product_code" value="{{ old('product_code') }}">
+                                        <input type="text" class="form-control" name="product_code"
+                                            value="{{ old('product_code') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -87,9 +92,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Kategori <br/>
+                                    <label>Kategori <br />
                                         @if ($categories->isEmpty())
-                                            <code>Belum ada kategori klik <a href="{{ route('product-category.index') }}">disini</a> untuk menambah kategori.</code>
+                                        <code>Belum ada kategori klik <a href="{{ route('product-category.index') }}">disini</a> untuk menambah kategori.</code>
                                         @endif
                                     </label>
                                     <div class="input-group">
@@ -100,10 +105,10 @@
                                         </div>
                                         <select class="form-control" name="category_id">
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}"
-                                                    {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                                                    {{ $category->name }}
-                                                </option>
+                                            <option value="{{ $category->id }}" {{ old('category_id')==$category->id ?
+                                                'selected' : '' }}>
+                                                {{ $category->name }}
+                                            </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -126,7 +131,7 @@
                                     <label>
                                         Harga Beli
                                     </label>
-                                    
+
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">

@@ -10,7 +10,8 @@ use App\Http\Requests\CompanyProfileRequest;
 
 class CompanyProfileController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $title = "Company Profile";
 
         $item = CompanyProfile::find(1);
@@ -21,26 +22,28 @@ class CompanyProfileController extends Controller
         ]);
     }
 
-    public function save(CompanyProfileRequest $request){
+    public function save(CompanyProfileRequest $request)
+    {
         $data = $request->all();
         $image = $request->file('image');
 
-        if ($image){
+        if ($image) {
             $data['image'] = $image->storeAs(
-                'public/assets/company', 'company.jpg'
+                'public/assets/company',
+                'company.jpg'
             );
-        }else{
+        } else {
             $data['image'] = "";
         }
 
         $currentProfile = CompanyProfile::find(1);
 
-        if (!$currentProfile){
+        if (!$currentProfile) {
             CompanyProfile::create($data);
-            return redirect()->route('companyProfile.index')->with('success','Profil toko berhasil disimpan!');
-        }else{
+            return redirect()->route('companyProfile.index')->with('success', 'Profil toko berhasil disimpan!');
+        } else {
             $currentProfile->update($data);
-            return redirect()->route('companyProfile.index')->with('success','Profil toko berhasil disimpan!');
+            return redirect()->route('companyProfile.index')->with('success', 'Profil toko berhasil disimpan!');
         }
     }
 }
