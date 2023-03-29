@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,37 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
-
-Route::prefix('/admin')
-    ->middleware('auth', 'admin')
-    ->group(function () {
-        Route::get('/', 'HomeController@index');
-        Route::resource('user', 'UserController');
-        Route::resource('product', 'ProductController');
-        Route::resource('product-category', 'ProductCategoryController');
-        Route::resource('customer', 'CustomerController');
-        Route::resource('coupon', 'CouponController');
-
-        Route::get('/company', 'CompanyProfileController@index')->name('companyProfile.index');
-        Route::post('/company', 'CompanyProfileController@save')->name('companyProfile.save');
-    });
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
-
-    Route::post('/sale/getCoupon', 'SaleController@getCoupon')->name('sale.getCoupon');
-    Route::resource('sale', 'SaleController');
-    Route::post('/transaction/storeTransaction', 'TransactionController@storeTransaction')->name('transaction.storeTransaction');
-    Route::post('/transaction/report', 'TransactionController@report')->name('transaction.report');
-    Route::get('/struk/{transaction_code?}', 'TransactionController@struk')->name('transaction.struk');
-    Route::resource('transaction', 'TransactionController')->except([
-        'create'
-    ]);
-    Route::get('/transaction/create/{transaction_code?}', 'TransactionController@create')->name('transaction.create');
-
-    Route::get('/profile', 'ProfileController@index')->name('profile.index');
-    Route::put('/profile', 'ProfileController@update')->name('profile.update');
+Route::get('/', function () {
+    return view('welcome');
 });
-
-Auth::routes(['verify' => true]);
