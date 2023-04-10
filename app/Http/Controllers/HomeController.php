@@ -8,6 +8,16 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('layouts.app');
+        return view('landing.pages.index');
+    }
+
+    public function catalog()
+    {
+        return view('landing.pages.catalog');
+    }
+
+    public function cart()
+    {
+        return view('landing.pages.keranjang');
     }
 }
