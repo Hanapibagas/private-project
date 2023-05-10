@@ -1,8 +1,6 @@
-<link rel="stylesheet" href="{{ asset('assets/backend/css/bootstrap.min.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/backend/css/lineicons.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/backend/css/quill/bubble.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/backend/css/quill/snow.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/backend/css/fullcalendar.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/backend/css/morris.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/backend/css/datatable.css') }}" />
-<link rel="stylesheet" href="{{ asset('assets/backend/css/main.css') }}" />
+<link href="{{ asset('assets/backend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+<link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+<link href="{{ asset('assets/backend/css/sb-admin-2.min.css') }}" rel="stylesheet">

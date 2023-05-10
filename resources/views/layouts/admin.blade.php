@@ -1,76 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
-    <title>@yield('title')</title>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Dashboard</title>
     @include('includes.admin.style')
-    @stack('style')
 
 </head>
 
-<body>
+<body id="page-top">
+    <div id="wrapper">
 
-    @include('includes.admin.sidebar')
+        @include('includes.admin.sidebar')
 
-    <div class="overlay"></div>
+        <div id="content-wrapper" class="d-flex flex-column">
 
-    <main class="main-wrapper">
+            <div id="content">
 
-        @include('includes.admin.header')
+                @include('includes.admin.header')
 
-        <section class="section">
+                <div class="container-fluid">
 
-            @yield('content')
+                    @yield('content')
 
-        </section>
+                </div>
 
-        @include('includes.admin.footer')
-        @stack('script')
-
-    </main>
-
-    <button class="option-btn">
-        <i class="lni lni-cog"></i>
-    </button>
-    <div class="option-overlay"></div>
-    <div class="option-box">
-        <div class="option-header">
-            <div>
-                <h5>Theme Customizer</h5>
-                <p class="text-gray">Customize and Preview in Real time</p>
             </div>
-            <button class="option-btn-close text-gray">
-                <i class="lni lni-close"></i>
-            </button>
-        </div>
-        <h6 class="mb-10">Sidebar</h6>
-        <ul class="mb-30">
-            <li><button class="leftSidebarButton active">Left Sidebar</button></li>
-            <li><button class="rightSidebarButton">Right Sidebar</button></li>
-        </ul>
 
-        <h6 class="mb-10">Theme</h6>
-        <ul class="d-flex flex-wrap align-items-center">
-            <li>
-                <button class="lightThemeButton active">
-                    Light Theme + Sidebar 1
-                </button>
-            </li>
-            <li>
-                <button class="lightThemeButton2">Light Theme + Sidebar 2</button>
-            </li>
-            <li><button class="darkThemeButton">Dark Theme + Sidebar 1</button></li>
-            <li>
-                <button class="darkThemeButton2">Dark Theme + Sidebar 2</button>
-            </li>
-        </ul>
+            @include('includes.admin.footer')
+
+        </div>
+
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     @include('includes.admin.script')

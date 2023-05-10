@@ -1,168 +1,193 @@
-<header class="header">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-5 col-md-5 col-6">
-                <div class="header-left d-flex align-items-center">
-                    <div class="menu-toggle-btn mr-20">
-                        <button id="menu-toggle" class="main-btn primary-btn btn-hover">
-                            <i class="lni lni-chevron-left me-2"></i> Menu
-                        </button>
-                    </div>
-                    <div class="header-search d-none d-md-flex">
-                        <form action="#">
-                            <input type="text" placeholder="Search..." />
-                            <button><i class="lni lni-search-alt"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-7 col-md-7 col-6">
-                <div class="header-right">
-                    <!-- notification start -->
-                    <div class="notification-box ml-15 d-none d-md-flex">
-                        <button class="dropdown-toggle" type="button" id="notification" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="lni lni-alarm"></i>
-                            <span>2</span>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notification">
-                            <li>
-                                <a href="#0">
-                                    <div class="image">
-                                        <img src="assets/images/lead/lead-6.png" alt="" />
-                                    </div>
-                                    <div class="content">
-                                        <h6>
-                                            John Doe
-                                            <span class="text-regular">
-                                                comment on a product.
-                                            </span>
-                                        </h6>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consect etur adipiscing
-                                            elit Vivamus tortor.
-                                        </p>
-                                        <span>10 mins ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#0">
-                                    <div class="image">
-                                        <img src="assets/images/lead/lead-1.png" alt="" />
-                                    </div>
-                                    <div class="content">
-                                        <h6>
-                                            Jonathon
-                                            <span class="text-regular">
-                                                like on a product.
-                                            </span>
-                                        </h6>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consect etur adipiscing
-                                            elit Vivamus tortor.
-                                        </p>
-                                        <span>10 mins ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- notification end -->
-                    <!-- message start -->
-                    <div class="header-message-box ml-15 d-none d-md-flex">
-                        <button class="dropdown-toggle" type="button" id="message" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="lni lni-envelope"></i>
-                            <span>3</span>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="message">
-                            <li>
-                                <a href="#0">
-                                    <div class="image">
-                                        <img src="assets/images/lead/lead-5.png" alt="" />
-                                    </div>
-                                    <div class="content">
-                                        <h6>Jacob Jones</h6>
-                                        <p>Hey!I can across your profile and ...</p>
-                                        <span>10 mins ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#0">
-                                    <div class="image">
-                                        <img src="assets/images/lead/lead-3.png" alt="" />
-                                    </div>
-                                    <div class="content">
-                                        <h6>John Doe</h6>
-                                        <p>Would you mind please checking out</p>
-                                        <span>12 mins ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#0">
-                                    <div class="image">
-                                        <img src="assets/images/lead/lead-2.png" alt="" />
-                                    </div>
-                                    <div class="content">
-                                        <h6>Anee Lee</h6>
-                                        <p>Hey! are you available for freelance?</p>
-                                        <span>1h ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- message end -->
-                    <!-- filter start -->
-                    <div class="filter-box ml-15 d-none d-md-flex">
-                        <button class="" type="button" id="filter">
-                            <i class="lni lni-funnel"></i>
-                        </button>
-                    </div>
-                    <!-- filter end -->
-                    <!-- profile start -->
-                    <div class="profile-box ml-15">
-                        <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <div class="profile-info">
-                                <div class="info">
-                                    <h6>John Doe</h6>
-                                    <div class="image">
-                                        <img src="assets/images/profile/profile-image.png" alt="" />
-                                        <span class="status"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <i class="lni lni-chevron-down"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
-                            <li>
-                                <a href="#0">
-                                    <i class="lni lni-user"></i> View Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#0">
-                                    <i class="lni lni-alarm"></i> Notifications
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
-                            </li>
-                            <li>
-                                <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
-                            </li>
-                            <li>
-                                <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- profile end -->
-                </div>
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+    <!-- Sidebar Toggle (Topbar) -->
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- Topbar Search -->
+    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
             </div>
         </div>
-    </div>
-</header>
+    </form>
+
+    <!-- Topbar Navbar -->
+    <ul class="navbar-nav ml-auto">
+
+        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+        <li class="nav-item dropdown no-arrow d-sm-none">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                            aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </li>
+
+        <!-- Nav Item - Alerts -->
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter">3+</span>
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                    Alerts Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                        <div class="icon-circle bg-primary">
+                            <i class="fas fa-file-alt text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">December 12, 2019</div>
+                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                    </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                        <div class="icon-circle bg-success">
+                            <i class="fas fa-donate text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">December 7, 2019</div>
+                        $290.29 has been deposited into your account!
+                    </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                        <div class="icon-circle bg-warning">
+                            <i class="fas fa-exclamation-triangle text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">December 2, 2019</div>
+                        Spending Alert: We've noticed unusually high spending for your account.
+                    </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+            </div>
+        </li>
+
+        <!-- Nav Item - Messages -->
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-envelope fa-fw"></i>
+                <!-- Counter - Messages -->
+                <span class="badge badge-danger badge-counter">7</span>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="messagesDropdown">
+                <h6 class="dropdown-header">
+                    Message Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
+                        <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div class="font-weight-bold">
+                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
+                            problem I've been having.</div>
+                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                    </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div>
+                        <div class="text-truncate">I have the photos that you ordered last month, how
+                            would you like them sent to you?</div>
+                        <div class="small text-gray-500">Jae Chun · 1d</div>
+                    </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
+                        <div class="status-indicator bg-warning"></div>
+                    </div>
+                    <div>
+                        <div class="text-truncate">Last month's report looks great, I am very happy with
+                            the progress so far, keep up the good work!</div>
+                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                    </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
+                        <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div>
+                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                            told me that people say this to all dogs, even if they aren't good...</div>
+                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                    </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+            </div>
+        </li>
+
+        <div class="topbar-divider d-none d-sm-block"></div>
+
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                </a>
+            </div>
+        </li>
+
+    </ul>
+
+</nav>
