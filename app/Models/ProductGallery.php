@@ -15,6 +15,6 @@ class ProductGallery extends Model
 
     public function Product()
     {
-        $this->belongsTo(Product::class, 'product_id', 'id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 }

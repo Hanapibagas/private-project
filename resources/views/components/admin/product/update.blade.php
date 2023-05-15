@@ -11,12 +11,12 @@ Berita
     </div>
     <div class="card shadow">
         <div class="card-body">
-            <form action="{{ route('update_category', $files->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('update_category', $product->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
                     <label for="title">Kategori</label>
-                    <input type="text" value="{{ $files->name }}"
+                    <input type="text" value="{{ $product->name }}"
                         class="form-control @error('name') is-invalid @enderror" name="name">
                     @error('name')
                     <span class="invalid-feedback" role="alert">

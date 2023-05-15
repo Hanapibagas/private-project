@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductCotroller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,5 +16,17 @@ Auth::routes();
 Route::middleware('auth', 'checkroll:admin')->group(function () {
     Route::get('dashboard-admin', [DashboardController::class, 'dashboard_index'])->name('dashboard_index');
     //
+    Route::get('product', [ProductCotroller::class, 'index_product'])->name('index_product');
+    Route::get('product/create', [ProductCotroller::class, 'create_product'])->name('create_product');
+    Route::get('product/update/{id}', [ProductCotroller::class, 'edit_product'])->name('edit_product');
+    Route::put('product/post/{id}', [ProductCotroller::class, 'update_category'])->name('update_category');
+    Route::post('product/post', [ProductCotroller::class, 'store_product'])->name('store_product');
+    Route::delete('product/delete/{id}', [P::class, 'destroy_category'])->name('destroy_category');
+    //
     Route::get('category', [CategoryController::class, 'index_category'])->name('index_category');
+    Route::get('category/create', [CategoryController::class, 'create_cataegory'])->name('create_cataegory');
+    Route::get('category/update/{id}', [CategoryController::class, 'edit_category'])->name('edit_category');
+    Route::put('category/post/{id}', [CategoryController::class, 'update_category'])->name('update_category');
+    Route::post('category/post', [CategoryController::class, 'store_category'])->name('store_category');
+    Route::delete('category/delete/{id}', [CategoryController::class, 'destroy_category'])->name('destroy_category');
 });

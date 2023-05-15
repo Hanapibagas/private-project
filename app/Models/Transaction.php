@@ -24,16 +24,16 @@ class Transaction extends Model
 
     public function User()
     {
-        $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function Costumer()
     {
-        $this->belongsTo(Costumer::class, 'customere_id', 'id');
+        return $this->belongsTo(Costumer::class, 'customere_id', 'id');
     }
 
     public function Coupon()
     {
-        $this->belongsTo(Coupon::class, 'coupon_id', 'id');
+        return $this->belongsTo(Coupon::class, 'coupon_id', 'id');
     }
 }

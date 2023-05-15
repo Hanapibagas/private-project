@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
     protected $fillable = [
         'product_code',
-        'description',
+        'deskripsi',
         'name',
         'selling_price',
         'purchase_price',
@@ -20,6 +20,6 @@ class Product extends Model
 
     public function ProductCategory()
     {
-        $this->belongsTo(ProductCategory::class, 'category_id', 'id');
+        return $this->belongsTo(ProductCategory::class, 'category_id', 'id');
     }
 }
