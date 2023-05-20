@@ -46,12 +46,37 @@ class ProductCotroller extends Controller
             'category_id' => $request->input('category_id')
         ]);
 
-        return redirect()->route('index_product')->with('status', 'Selamat data kategori berhasil ditambahkan');
+        return redirect()->route('index_product')->with('status', 'Selamat data product berhasil ditambahkan');
     }
 
     public function edit_product(Request $request, $id)
     {
         $product = Product::where('id', $id)->first();
-        return view('components.admin.product.update', compact('product'));
+        $category = ProductCategory::all();
+        return view('components.admin.product.update', compact('product', 'category'));
+    }
+
+    public function update_product(Request $request, $id)
+    {
+        $product = Product::where('id', $id)->first();
+
+        $product->update([
+            'product_code' => $request->input('product_code'),
+            'deskripsi' => $request->input('deskripsi'),
+            'name' => $request->input('name'),
+            'selling_price' => $request->input('selling_price'),
+            'purchase_price' => $request->input('purchase_price'),
+            'stock' => $request->input('stock'),
+            'category_id' => $request->input('category_id')
+        ]);
+
+        return redirect()->route('index_product')->with('status', 'Selamat data product berhasil diperbarui');
+    }
+
+    public function destroy_product($id)
+    {
+        $delete = Product::find($id);
+        $delete->delete();
+        return response()->json(['status' => 'Selamat data infografis berhasil dihapus']);
     }
 }

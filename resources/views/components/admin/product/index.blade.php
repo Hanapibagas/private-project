@@ -56,7 +56,7 @@ Category
                                 <a href="{{ route('edit_product', $files->id) }}" class="btn btn-info">
                                     <i class="fa fa-pencil-alt"></i>
                                 </a>
-                                <form action="{{ route('destroy_category', $files->id) }}" method="POST"
+                                <form action="{{ route('destroy_product', $files->id) }}" method="POST"
                                     class="d-inline">
                                     @csrf
                                     @method('DELETE')
@@ -107,7 +107,7 @@ Category
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'category/delete/' + deleteid,
+                            url: 'product/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {
