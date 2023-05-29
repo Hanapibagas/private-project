@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CuponController;
+use App\Http\Controllers\Admin\DaftarCostumerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductCotroller;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +17,11 @@ Auth::routes();
 
 Route::middleware('auth', 'checkroll:admin')->group(function () {
     Route::get('dashboard-admin', [DashboardController::class, 'dashboard_index'])->name('dashboard_index');
+    //
+    Route::get('coupon', [CuponController::class, 'index_cupon'])->name('index_cupon');
+    Route::get('coupon/create', [CuponController::class, 'create_cupon'])->name('create_cupon');
+    //
+    Route::get('daftar-costumer', [DaftarCostumerController::class, 'index_costumer'])->name('index_costumer');
     //
     Route::get('product', [ProductCotroller::class, 'index_product'])->name('index_product');
     Route::get('product/create', [ProductCotroller::class, 'create_product'])->name('create_product');

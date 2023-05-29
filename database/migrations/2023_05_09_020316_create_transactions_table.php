@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->string('transaction_code')->primary();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('customer_id')->constrained('costumers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('coupon_id')->constrained('coupons')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('discount')->nullable();
             $table->integer('discount_price')->nullable();

@@ -23,12 +23,18 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Products:</h6>
                 <a class="collapse-item" href="{{ route('index_product') }}">Tambah Product</a>
+                <a class="collapse-item" href="{{ route('index_cupon') }}">Tambah Coupon</a>
                 <a class="collapse-item {{ request()->is('category') || request()->is('category/create') ? 'active' : '' }}"
                     href="{{ route('index_category') }}">Tambah Kategori</a>
             </div>
         </div>
     </li>
     <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('index_costumer') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Daftar Costumer</span></a>
+    </li>
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
