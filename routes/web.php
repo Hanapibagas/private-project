@@ -5,13 +5,12 @@ use App\Http\Controllers\Admin\CuponController;
 use App\Http\Controllers\Admin\DaftarCostumerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductCotroller;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Auth::routes();
 
