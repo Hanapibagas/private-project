@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Cupon
+gallery Product
 @endsection
 
 @push('style')
@@ -21,10 +21,10 @@ Cupon
 
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Daftar kupon yang tersedia</h1>
-        <a href="{{ route('create_cupon') }}" class="btn btn-sm btn-primary shadow-sm">
+        <h1 class="h3 mb-0 text-gray-800">Daftar gallery product</h1>
+        <a href="{{ route('create_product') }}" class="btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-plus fa-sm text-white-50"></i>
-            Tambah
+            Tambah product
         </a>
     </div>
     <div class="row">
@@ -33,32 +33,30 @@ Cupon
                 <table id="myTable" class="table table-stripped">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Kode Kupon</th>
-                            <th>Nama</th>
-                            <th>Keterangan</th>
-                            <th>Diskon</th>
-                            <th>Expired</th>
-                            <th>Status</th>
+                            <th>Kode product</th>
+                            <th>kategory product</th>
+                            <th>Nama product</th>
+                            <th>Harga jual</th>
+                            <th>Harga beli</th>
+                            <th>Stok barang</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $cupon as $key => $files )
+                        @foreach ( $product as $key => $files )
                         <tr>
-                            <th scope="row">{{ $key+1 }}</th>
-                            <th>{{ $files->coupon_code }}</th>
+                            <th>{{ $files->product_code }}</th>
+                            <th>{{ $files->ProductCategory->name }}</th>
                             <th>{{ $files->name }}</th>
-                            <th>{{ $files->description }}</th>
-                            <th>{{ $files->expired }}</th>
-                            <th>{{ $files->status }}</th>
-                            <th>{{ $files->discount }}</th>
+                            <th>{{ $files->selling_price }}</th>
+                            <th>{{ $files->purchase_price }}</th>
+                            <th>{{ $files->stock }}</th>
                             <th>
                                 <input type="hidden" class="delete_id" value="{{ $files->id }}">
-                                <a href="{{ route('edit_category', $files->id) }}" class="btn btn-info">
+                                <a href="{{ route('edit_product', $files->id) }}" class="btn btn-info">
                                     <i class="fa fa-pencil-alt"></i>
                                 </a>
-                                <form action="{{ route('destroy_category', $files->id) }}" method="POST"
+                                <form action="{{ route('destroy_product', $files->id) }}" method="POST"
                                     class="d-inline">
                                     @csrf
                                     @method('DELETE')
@@ -109,7 +107,7 @@ Cupon
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'category/delete/' + deleteid,
+                            url: 'product/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

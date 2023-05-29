@@ -23,6 +23,7 @@ class ProductCotroller extends Controller
 
     public function store_product(Request $request)
     {
+        // dd($request->all());
         $message = [
             'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
         ];
@@ -38,11 +39,11 @@ class ProductCotroller extends Controller
 
         Product::create([
             'product_code' => $request->input('product_code'),
-            'deskripsi' => $request->input('deskripsi'),
             'name' => $request->input('name'),
             'selling_price' => $request->input('selling_price'),
             'purchase_price' => $request->input('purchase_price'),
             'stock' => $request->input('stock'),
+            'deskripsi' => $request->input('deskripsi'),
             'category_id' => $request->input('category_id')
         ]);
 
