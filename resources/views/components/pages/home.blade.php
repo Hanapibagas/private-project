@@ -73,14 +73,14 @@ Store Homepage
                     <a href="" class="component-products d-block">
                         <div class="products-thumbnail">
                             <div class="products-image"
-                                style="background-image: url('{{ Storage::url($file->name) }}');">
+                                style="background-image: url('{{ Storage::url($file->Gallery->name) }}');">
                             </div>
                         </div>
                         <div class="products-text">
-                            {{ $file->Product->name }}
+                            {{ $file->name }}
                         </div>
                         <div class="products-price">
-                            Rp.{{ $file->Product->selling_price }}
+                            Rp.{{ number_format($file->selling_price) }}
                         </div>
                     </a>
                 </div>

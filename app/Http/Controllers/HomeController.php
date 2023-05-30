@@ -11,13 +11,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $product = ProductGallery::paginate(4);
+        $product = Product::paginate(4);
         $kategory = ProductCategory::all();
         return view('components.pages.home', compact('product', 'kategory'));
-    }
-
-    public function category()
-    {
-        return view('components.pages.category');
     }
 }

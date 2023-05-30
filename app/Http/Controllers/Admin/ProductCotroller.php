@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductCotroller extends Controller
 {
@@ -37,14 +38,16 @@ class ProductCotroller extends Controller
             'deskripsi' => 'required',
         ], $message);
 
+        $slug = Str::slug($request->name);
         Product::create([
             'product_code' => $request->input('product_code'),
             'name' => $request->input('name'),
+            'slug' => $slug,
             'selling_price' => $request->input('selling_price'),
             'purchase_price' => $request->input('purchase_price'),
             'stock' => $request->input('stock'),
             'deskripsi' => $request->input('deskripsi'),
-            'category_id' => $request->input('category_id')
+            'category_id' => $request->input('category_id'),
         ]);
 
         return redirect()->route('index_product')->with('status', 'Selamat data product berhasil ditambahkan');

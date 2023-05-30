@@ -39,32 +39,24 @@ Store Category Page
                 </div>
             </div>
             <div class="row">
-                {{-- @php $incrementProduct = 0 @endphp
-                @forelse ($products as $product)
+                @php $incrementProduct = 0 @endphp
+                @foreach ( $product as $file )
                 <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $incrementProduct+= 100 }}">
-                    <a href="{{ route('detail', $product->slug) }}" class="component-products d-block">
+                    <a href="{{ route('details_products', $file->slug) }}" class="component-products d-block">
                         <div class="products-thumbnail">
                             <div class="products-image" style="
-                                @if($product->galleries->count())
-                                    background-image: url('{{ Storage::url($product->galleries->first()->photos) }}')
-                                @else
-                                    background-color: #eee
-                                @endif
+                                    background-image: url('{{ Storage::url($file->Gallery->name) }}')
                             "></div>
                         </div>
                         <div class="products-text">
-                            {{ $product->name }}
+                            {{ $file->name }}
                         </div>
                         <div class="products-price">
-                            ${{ $product->price }}
+                            Rp.{{ number_format($file->selling_price) }}
                         </div>
                     </a>
                 </div>
-                @empty
-                <div class="col-12 text-center py-5" data-aos="fade-up" data-aos-delay="100">
-                    No Products Found
-                </div>
-                @endforelse --}}
+                @endforeach
             </div>
             <div class="row">
                 <div class="col-12 mt-4">

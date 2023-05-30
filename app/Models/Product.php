@@ -12,6 +12,7 @@ class Product extends Model
         'product_code',
         'deskripsi',
         'name',
+        'slug',
         'selling_price',
         'purchase_price',
         'stock',

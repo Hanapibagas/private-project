@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
-    // Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/', [HomeController::class, 'index'])->name('index1');
     Route::get('/prodcut-home', [ProductController::class, 'category'])->name('category1');
+    Route::get('/prodcut-home/details/{slug}', [ProductController::class, 'details_products'])->name('details_products');
+    Route::get('/prodcut-home/cart', [ProductController::class, 'cart'])->name('cart');
 });
 
 // Route::get('category', [HomeController::class, 'category'])->name('product');
