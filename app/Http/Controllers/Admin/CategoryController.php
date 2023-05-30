@@ -55,6 +55,6 @@ class CategoryController extends Controller
     {
         $delete = ProductCategory::find($id);
         $delete->delete();
-        return response()->json(['status' => 'Selamat data infografis berhasil dihapus']);
+        return response()->json(['status' => 'Selamat data category berhasil dihapus']);
     }
 }

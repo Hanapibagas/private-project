@@ -78,6 +78,6 @@ class ProductCotroller extends Controller
     {
         $delete = Product::find($id);
         $delete->delete();
-        return response()->json(['status' => 'Selamat data infografis berhasil dihapus']);
+        return response()->json(['status' => 'Selamat data product berhasil dihapus']);
     }
 }

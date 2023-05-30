@@ -11,77 +11,28 @@ Product
     </div>
     <div class="card shadow">
         <div class="card-body">
-            <form action="{{ route('store_product') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('store_gallery') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="title">Kode product</label>
-                    <input type="text" placeholder="Masukkan kode barang"
-                        class="form-control @error('product_code') is-invalid @enderror" name="product_code">
-                    @error('product_code')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="title">Nama product</label>
-                    <input type="text" placeholder="Masukkan nama product"
-                        class="form-control @error('name') is-invalid @enderror" name="name">
-                    @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="title">Harga jual</label>
-                    <input type="number" placeholder="Masukkan harga jual barang"
-                        class="form-control @error('selling_price') is-invalid @enderror" name="selling_price">
-                    @error('selling_price')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="title">Harga beli</label>
-                    <input type="number" placeholder="Masukkan harga beli barang"
-                        class="form-control @error('purchase_price') is-invalid @enderror" name="purchase_price">
-                    @error('purchase_price')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="title">Stok barang</label>
-                    <input type="number" placeholder="Masukkan stok barang"
-                        class="form-control @error('stock') is-invalid @enderror" name="stock">
-                    @error('stock')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="title">Deskripsi barang</label>
-                    <textarea name="deskripsi" class="blok w-full @error('deskripsi') is-invalid @enderror"></textarea>
-                    @error('deskripsi')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="title">Kategori</label>
-                    <select name="category_id" class="form-control">
+                    <label for="title">Product</label>
+                    <select name="product_id" class="form-control">
                         <option value="">-- Silahkan Pilih --</option>
-                        @foreach ( $category as $files )
+                        @foreach ( $product as $files )
                         <option value="{{ $files->id }}">
                             {{ $files->name }}
                         </option>
                         @endforeach
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="title">Gambar</label>
+                    <input type="file" placeholder="Masukkan kode barang"
+                        class="form-control-file @error('name') is-invalid @enderror" name="name[]" multiple="multiple">
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">
                     Tambah kategori

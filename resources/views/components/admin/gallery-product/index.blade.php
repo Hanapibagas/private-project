@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-gallery Product
+Gallery Product
 @endsection
 
 @push('style')
@@ -22,9 +22,9 @@ gallery Product
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar gallery product</h1>
-        <a href="{{ route('create_product') }}" class="btn btn-sm btn-primary shadow-sm">
+        <a href="{{ route('create_gallery') }}" class="btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-plus fa-sm text-white-50"></i>
-            Tambah product
+            Tambah gallery product
         </a>
     </div>
     <div class="row">
@@ -33,30 +33,22 @@ gallery Product
                 <table id="myTable" class="table table-stripped">
                     <thead>
                         <tr>
-                            <th>Kode product</th>
-                            <th>kategory product</th>
-                            <th>Nama product</th>
-                            <th>Harga jual</th>
-                            <th>Harga beli</th>
-                            <th>Stok barang</th>
+                            <th>Product</th>
+                            <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $product as $key => $files )
+                        @foreach ( $gallery as $key => $files )
                         <tr>
-                            <th>{{ $files->product_code }}</th>
-                            <th>{{ $files->ProductCategory->name }}</th>
-                            <th>{{ $files->name }}</th>
-                            <th>{{ $files->selling_price }}</th>
-                            <th>{{ $files->purchase_price }}</th>
-                            <th>{{ $files->stock }}</th>
+                            <th>{{ $files->Product->name }}</th>
+                            <th>
+                                <img src="{{ Storage::url($files->name) }}" alt="" style="width: 150px"
+                                    class="img-thumbnail">
+                            </th>
                             <th>
                                 <input type="hidden" class="delete_id" value="{{ $files->id }}">
-                                <a href="{{ route('edit_product', $files->id) }}" class="btn btn-info">
-                                    <i class="fa fa-pencil-alt"></i>
-                                </a>
-                                <form action="{{ route('destroy_product', $files->id) }}" method="POST"
+                                <form action="{{ route('destroy_gallery', $files->id) }}" method="POST"
                                     class="d-inline">
                                     @csrf
                                     @method('DELETE')
@@ -107,7 +99,7 @@ gallery Product
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'product/delete/' + deleteid,
+                            url: 'gallery/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

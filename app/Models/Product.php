@@ -22,4 +22,9 @@ class Product extends Model
     {
         return $this->belongsTo(ProductCategory::class, 'category_id', 'id');
     }
+
+    public function Gallery()
+    {
+        return $this->belongsTo(ProductGallery::class, 'id');
+    }
 }

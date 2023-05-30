@@ -4,14 +4,20 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CuponController;
 use App\Http\Controllers\Admin\DaftarCostumerController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GalleryProductController;
 use App\Http\Controllers\Admin\ProductCotroller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('index');
+    // Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/', [HomeController::class, 'index'])->name('index1');
+    Route::get('/prodcut-home', [ProductController::class, 'category'])->name('category1');
 });
+
+// Route::get('category', [HomeController::class, 'category'])->name('product');
 
 Auth::routes();
 
@@ -20,6 +26,11 @@ Route::middleware('auth', 'checkroll:admin')->group(function () {
     //
     Route::get('/coupon', [CuponController::class, 'index_cupon'])->name('index_cupon');
     Route::get('/coupon/create', [CuponController::class, 'create_cupon'])->name('create_cupon');
+    //
+    Route::get('/gallery', [GalleryProductController::class, 'index_gallery'])->name('index_gallery');
+    Route::get('/gallery/cretae', [GalleryProductController::class, 'create_gallery'])->name('create_gallery');
+    Route::post('/gallery/post', [GalleryProductController::class, 'store_gallery'])->name('store_gallery');
+    Route::delete('/gallery/delete/{id}', [GalleryProductController::class, 'destroy_gallery'])->name('destroy_gallery');
     //
     Route::get('/daftar-costumer', [DaftarCostumerController::class, 'index_costumer'])->name('index_costumer');
     //
