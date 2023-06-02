@@ -24,7 +24,6 @@
                 <h6 class="collapse-header">Products:</h6>
                 <a class="collapse-item" href="{{ route('index_product') }}">Tambah Product</a>
                 <a class="collapse-item" href="{{ route('index_cupon') }}">Tambah Coupon</a>
-                <a class="collapse-item" href="{{ route('index_gallery') }}">Tambah Gallery Product</a>
                 <a class="collapse-item {{ request()->is('category') || request()->is('category/create') ? 'active' : '' }}"
                     href="{{ route('index_category') }}">Tambah Kategori</a>
             </div>

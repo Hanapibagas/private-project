@@ -46,7 +46,6 @@ Store Details Page
                         <div class="price">${{ number_format($product->selling_price) }}</div>
                     </div>
                     <div class="col-lg-2" data-aos="zoom-in">
-                        @auth
                         <form action="" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
@@ -57,11 +56,6 @@ Store Details Page
                                 Add to Cart
                             </button>
                         </form>
-                        @else
-                        <a href="{{ route('login') }}" class="btn btn-success px-4 text-white btn-block mb-3">
-                            Sign in to Add
-                        </a>
-                        @endauth
                     </div>
                 </div>
             </div>

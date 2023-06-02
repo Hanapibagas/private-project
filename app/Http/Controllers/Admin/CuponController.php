@@ -18,4 +18,14 @@ class CuponController extends Controller
     {
         return view('components.admin.cupon.create');
     }
+
+    public function store_cupon(Request $request)
+    {
+        $data = $request->all();
+        $data['coupon_code'] = strtoupper(str_replace(' ', '', $data['coupon_code']));
+
+        Coupon::create($data);
+
+        return redirect()->route('index_cupon')->with('status', 'Selamat data product berhasil ditambahkan');
+    }
 }

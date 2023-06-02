@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
@@ -22,33 +23,25 @@ class ProductCotroller extends Controller
         return view('components.admin.product.create', compact('category'));
     }
 
-    public function store_product(Request $request)
+    public function store_product(ProductRequest $request)
     {
-        // dd($request->all());
-        $message = [
-            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
-        ];
+        $photo = $request->file('photo');
 
-        $this->validate($request, [
-            'product_code' => 'required',
-            'name' => 'required',
-            'selling_price' => 'required',
-            'purchase_price' => 'required',
-            'stock' => 'required',
-            'deskripsi' => 'required',
-        ], $message);
+        $data = $request->all();
 
-        $slug = Str::slug($request->name);
-        Product::create([
-            'product_code' => $request->input('product_code'),
-            'name' => $request->input('name'),
-            'slug' => $slug,
-            'selling_price' => $request->input('selling_price'),
-            'purchase_price' => $request->input('purchase_price'),
-            'stock' => $request->input('stock'),
-            'deskripsi' => $request->input('deskripsi'),
-            'category_id' => $request->input('category_id'),
-        ]);
+        if ($photo) {
+            $data['photo'] = $photo->store(
+                'assets/product',
+                'public'
+            );
+        } else {
+            $data['photo'] = "";
+        }
+
+        $data['purchase_price'] = str_replace(',', '', $data['purchase_price']);
+        $data['selling_price'] = str_replace(',', '', $data['selling_price']);
+
+        Product::create($data);
 
         return redirect()->route('index_product')->with('status', 'Selamat data product berhasil ditambahkan');
     }
@@ -60,19 +53,22 @@ class ProductCotroller extends Controller
         return view('components.admin.product.update', compact('product', 'category'));
     }
 
-    public function update_product(Request $request, $id)
+    public function update_product(ProductRequest $request, $id)
     {
-        $product = Product::where('id', $id)->first();
+        $photo = $request->file('photo');
 
-        $product->update([
-            'product_code' => $request->input('product_code'),
-            'deskripsi' => $request->input('deskripsi'),
-            'name' => $request->input('name'),
-            'selling_price' => $request->input('selling_price'),
-            'purchase_price' => $request->input('purchase_price'),
-            'stock' => $request->input('stock'),
-            'category_id' => $request->input('category_id')
-        ]);
+        $data = $request->all();
+        $data['purchase_price'] = str_replace(',', '', $data['purchase_price']);
+        $data['selling_price'] = str_replace(',', '', $data['selling_price']);
+
+        if ($photo) {
+            $data['photo'] = $photo->store(
+                'assets/product',
+                'public'
+            );
+        }
+
+        Product::findOrFail($id)->update($data);
 
         return redirect()->route('index_product')->with('status', 'Selamat data product berhasil diperbarui');
     }

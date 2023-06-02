@@ -14,8 +14,16 @@ Category
             <form action="{{ route('store_category') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="title">Kategori</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name">
+                    <label>Nama</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="fas fa-pencil-alt"></i>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                            value="{{ old('name') }}">
+                    </div>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

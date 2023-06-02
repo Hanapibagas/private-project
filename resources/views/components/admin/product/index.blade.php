@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Category
+Product
 @endsection
 
 @push('style')
@@ -21,10 +21,10 @@ Category
 
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Daftar kategori</h1>
+        <h1 class="h3 mb-0 text-gray-800">Daftar product</h1>
         <a href="{{ route('create_product') }}" class="btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-plus fa-sm text-white-50"></i>
-            Tambah kategori
+            Tambah product
         </a>
     </div>
     <div class="row">
@@ -48,8 +48,8 @@ Category
                             <th>{{ $files->product_code }}</th>
                             <th>{{ $files->ProductCategory->name }}</th>
                             <th>{{ $files->name }}</th>
-                            <th>{{ $files->selling_price }}</th>
-                            <th>{{ $files->purchase_price }}</th>
+                            <th>{{ number_format($files->selling_price) }}</th>
+                            <th>{{ number_format($files->purchase_price) }}</th>
                             <th>{{ $files->stock }}</th>
                             <th>
                                 <input type="hidden" class="delete_id" value="{{ $files->id }}">

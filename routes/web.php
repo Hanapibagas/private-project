@@ -18,7 +18,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/prodcut-home/cart', [ProductController::class, 'cart'])->name('cart');
 });
 
-// Route::get('category', [HomeController::class, 'category'])->name('product');
 
 Auth::routes();
 
@@ -28,15 +27,10 @@ Route::middleware('auth', 'checkroll:admin')->group(function () {
     Route::get('/coupon', [CuponController::class, 'index_cupon'])->name('index_cupon');
     Route::get('/coupon/create', [CuponController::class, 'create_cupon'])->name('create_cupon');
     //
-    Route::get('/gallery', [GalleryProductController::class, 'index_gallery'])->name('index_gallery');
-    Route::get('/gallery/cretae', [GalleryProductController::class, 'create_gallery'])->name('create_gallery');
-    Route::post('/gallery/post', [GalleryProductController::class, 'store_gallery'])->name('store_gallery');
-    Route::delete('/gallery/delete/{id}', [GalleryProductController::class, 'destroy_gallery'])->name('destroy_gallery');
-    //
     Route::get('/daftar-costumer', [DaftarCostumerController::class, 'index_costumer'])->name('index_costumer');
     //
     Route::get('/product', [ProductCotroller::class, 'index_product'])->name('index_product');
-    Route::get('.product/create', [ProductCotroller::class, 'create_product'])->name('create_product');
+    Route::get('/product/create', [ProductCotroller::class, 'create_product'])->name('create_product');
     Route::get('/product/edit/{id}', [ProductCotroller::class, 'edit_product'])->name('edit_product');
     Route::put('/product/update/{id}', [ProductCotroller::class, 'update_product'])->name('update_product');
     Route::post('/product/post', [ProductCotroller::class, 'store_product'])->name('store_product');

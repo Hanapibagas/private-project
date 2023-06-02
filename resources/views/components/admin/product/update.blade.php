@@ -7,87 +7,161 @@ Berita
 @section('content')
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Update kategori</h1>
+        <h1 class="h3 mb-0 text-gray-800">Update product</h1>
     </div>
     <div class="card shadow">
         <div class="card-body">
             <form action="{{ route('update_product', $product->id) }}" method="post" enctype="multipart/form-data">
-                @csrf
                 @method('PUT')
-                <div class="form-group">
-                    <label for="title">Kode product</label>
-                    <input type="text" value="{{ $product->product_code }}" placeholder="Masukkan kode barang"
-                        class="form-control @error('product_code') is-invalid @enderror" name="product_code">
-                    @error('product_code')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                @csrf
+                <div class="card-body">
+
+                    @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger alert-dismissible show fade">
+                        <div class="alert-body">
+                            <button class="close" data-dismiss="alert">
+                                <span>×</span>
+                            </button>
+                            {{ $error }}
+                        </div>
+                    </div>
+                    @endforeach
+                    @endif
+
+                    <div class="row">
+
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label for="">Pratinjau Foto</label>
+                                <img src="{{ Storage::disk('public')->exists($product->photo) ? Storage::url($product->photo) : url('assets/img/image_not_available.png') }}"
+                                    class="rounded img-responsive" alt="{{ $product->name }}" width="100%"
+                                    id="img-preview">
+                            </div>
+                            <div class="form-group">
+                                <label>Foto</label>
+                                <label class="float-right">
+                                    <a href="#" data-toggle="tooltip"
+                                        title="Klik untuk menghapus foto yang sudah dipilih" style="display:none"
+                                        id="img-reset">
+                                        <code class="text-right">Hapus Foto</code>
+                                    </a>
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-file-image"></i>
+                                        </div>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="photo" id="img-file">
+                                        <label class="custom-file-label" id="img-name">Pilih Foto</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label>Kode Produk</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-key"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" name="product_code"
+                                        value="{{ $product->product_code }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Nama</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" name="name" value="{{ $product->name }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Kategori</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-tag"></i>
+                                        </div>
+                                    </div>
+                                    <select class="form-control" name="category_id">
+                                        @foreach ($category as $category)
+                                        <option value="">{{ $category->name }}</option>
+                                        <option value="">-- Silahkan Ubah --</option>
+                                        <option value="{{ $category->id }}">
+                                            {{ $category->name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <label>Stok</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-layer-group"></i>
+                                        </div>
+                                    </div>
+                                    <input type="number" class="form-control currency" name="stock"
+                                        value="{{ $product->stock }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Harga Beli
+                                </label>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <b>Rp</b>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control currency" name="purchase_price"
+                                        value="{{ $product->purchase_price }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Harga Jual
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <b>Rp</b>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control currency" name="selling_price"
+                                        value="{{ $product->selling_price }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-10 offset-2">
+                            <div class="form-group">
+                                <label>Deskripsi</label>
+                                <textarea class="form-control" name="deskripsi">{!! $product->deskripsi !!}</textarea>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="title">Nama product</label>
-                    <input type="text" value="{{ $product->name }}" placeholder="Masukkan nama product"
-                        class="form-control @error('name') is-invalid @enderror" name="name">
-                    @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                <div class="card-footer text-right">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
-                <div class="form-group">
-                    <label for="title">Harga jual</label>
-                    <input type="number" value="{{ $product->selling_price }}" placeholder="Masukkan harga jual barang"
-                        class="form-control @error('selling_price') is-invalid @enderror" name="selling_price">
-                    @error('selling_price')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="title">Harga beli</label>
-                    <input type="number" value="{{ $product->purchase_price }}" placeholder="Masukkan harga beli barang"
-                        class="form-control @error('purchase_price') is-invalid @enderror" name="purchase_price">
-                    @error('purchase_price')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="title">Stok barang</label>
-                    <input type="number" value="{{ $product->stock }}" placeholder="Masukkan stok barang"
-                        class="form-control @error('stock') is-invalid @enderror" name="stock">
-                    @error('stock')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="title">Deskripsi barang</label>
-                    <textarea name="deskripsi"
-                        class="blok w-full @error('deskripsi') is-invalid @enderror">{!! $product->deskripsi !!}</textarea>
-                    @error('deskripsi')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="title">Kategori</label>
-                    <select name="category_id" class="form-control">
-                        <option value="">-- Pili kategori --</option>
-                        @foreach ( $category as $files )
-                        <option value="{{ $files->id }}">
-                            {{ $files->name }}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">
-                    Update kategori
-                </button>
             </form>
         </div>
     </div>
@@ -99,4 +173,5 @@ Berita
 <script>
     CKEDITOR.replace('deskripsi');
 </script>
+<script src="{{ url('assets/backend/js/image_upload.js') }}"></script>
 @endpush
