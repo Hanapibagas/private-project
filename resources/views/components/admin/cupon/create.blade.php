@@ -11,7 +11,7 @@ Cupon
     </div>
     <div class="card shadow">
         <div class="card-body">
-            <form action="{{ route('store_category') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('store_cupon') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
 

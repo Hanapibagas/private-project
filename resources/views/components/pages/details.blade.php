@@ -30,7 +30,7 @@ Store Details Page
             <div class="row">
                 <div class="col-lg-8" data-aos="zoom-in">
                     <transition name="slide-fade" mode="out-in">
-                        <img style="width: 300px;" src="{{ Storage::url($product->Gallery->name) }}" class="" alt="" />
+                        <img style="width: 300px;" src="{{ Storage::url($product->photo) }}" class="" alt="" />
                     </transition>
                 </div>
             </div>
@@ -42,27 +42,22 @@ Store Details Page
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8">
-                        <h1>{{ $product->name }}</h1>
+                        <h1>{{ $product->name }} </h1>
                         <div class="price">${{ number_format($product->selling_price) }}</div>
+                        <p>{{ $product->product_code }}</p>
                     </div>
                     <div class="col-lg-2" data-aos="zoom-in">
-                        <form action="" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
-                                <label>Jumlah Barang</label>
-                                <input min="1" type="number" class="form-control" name="zip_code">
-                            </div>
-                            <button type="submit" class="btn btn-success px-4 text-white btn-block mb-3">
-                                Add to Cart
-                            </button>
-                        </form>
+                        <a href="{{ route('isi_form_pemesanan', AppHelper::transaction_code()) }}"
+                            class="btn btn-success px-4 text-white btn-block mb-3">
+                            Isi Form pemesanan
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
         <section class="store-description">
             <div class="container">
-                <div class="row">
+                <div class="row" style="margin-top: -7px;">
                     <div class="col-12 col-lg-8">
                         {!! $product->deskripsi !!}
                     </div>

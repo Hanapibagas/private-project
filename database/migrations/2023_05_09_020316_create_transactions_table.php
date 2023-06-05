@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->string('transaction_code')->primary();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('coupon_id')->constrained('coupons')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('coupon_id')->nullable()->unsigned();
             $table->integer('discount')->nullable();
             $table->integer('discount_price')->nullable();
             $table->integer('sub_total')->nullable();
@@ -24,6 +24,10 @@ return new class extends Migration
             $table->integer('paid')->nullable();
             $table->integer('change')->nullable();
             $table->boolean('valid');
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('coupon_id')->references('id')->on('coupons');
         });
     }
 

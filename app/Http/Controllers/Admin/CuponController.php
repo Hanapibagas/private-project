@@ -28,4 +28,24 @@ class CuponController extends Controller
 
         return redirect()->route('index_cupon')->with('status', 'Selamat data product berhasil ditambahkan');
     }
+
+    public function edit_cupon(Request $request, $id)
+    {
+        $item = Coupon::findOrFail($id);
+        return view('components.admin.cupon.update', compact('item'));
+    }
+
+    public function update_cupon(Request $request, $id)
+    {
+        $data = $request->all();
+
+        Coupon::findOrFail($id)->update($data);
+        return redirect()->route('index_cupon')->with('status', 'Selamat data product berhasil ditambahkan');
+    }
+
+    public function destroy_cupon($id)
+    {
+        Coupon::findOrFail($id)->delete();
+        return response()->json(['status' => 'Selamat data category berhasil dihapus']);
+    }
 }

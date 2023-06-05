@@ -15,17 +15,29 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index1');
     Route::get('/prodcut-home', [ProductController::class, 'category'])->name('category1');
     Route::get('/prodcut-home/details/{slug}', [ProductController::class, 'details_products'])->name('details_products');
-    Route::get('/prodcut-home/cart', [ProductController::class, 'cart'])->name('cart');
+    Route::get('/transaction/create/{transaction_code?}', [ProductController::class, 'isi_form_pemesanan'])->name('isi_form_pemesanan');
+    Route::post('/transaction/post', [ProductController::class, 'add_cart'])->name('add_cart');
+    Route::delete('/transaction/delete/{id}', [ProductController::class, 'delete_pesanan'])->name('delete_pesanan');
+    Route::put('/transaction/update/pesanan/{id}', [ProductController::class, 'update_pesanan'])->name('update_pesanan');
+    Route::post('/sale/getCoupon', [ProductController::class, 'getCoupon'])->name('get_coupon');
+    Route::post('/transaction/post-pesanan', [ProductController::class, 'kirim_pesanan_product'])->name('kirim_pesanan_product');
+
+    Route::get('/transaction/success', [ProductController::class, 'success'])->name('success');
+    Route::get('/my-transaksi/{id}', [ProductController::class, 'my_transaksi'])->name('my_transaksi');
 });
 
 
 Auth::routes();
 
-Route::middleware('auth', 'checkroll:admin')->group(function () {
-    Route::get('/dashboard-admin', [DashboardController::class, 'dashboard_index'])->name('dashboard_index');
+Route::prefix('dashboard-admin')->middleware('auth', 'checkroll:admin')->group(function () {
+    Route::get('/', [DashboardController::class, 'dashboard_index'])->name('dashboard_index');
     //
     Route::get('/coupon', [CuponController::class, 'index_cupon'])->name('index_cupon');
     Route::get('/coupon/create', [CuponController::class, 'create_cupon'])->name('create_cupon');
+    Route::post('/coupon/post', [CuponController::class, 'store_cupon'])->name('store_cupon');
+    Route::get('/coupon/edit/{id}', [CuponController::class, 'edit_cupon'])->name('edit_cupon');
+    Route::put('/coupon/update/{id}', [CuponController::class, 'update_cupon'])->name('update_cupon');
+    Route::delete('/coupon/delete/{id}', [CuponController::class, 'destroy_cupon'])->name('destroy_cupon');
     //
     Route::get('/daftar-costumer', [DaftarCostumerController::class, 'index_costumer'])->name('index_costumer');
     //

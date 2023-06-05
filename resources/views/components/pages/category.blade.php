@@ -42,10 +42,10 @@ Store Category Page
                 @php $incrementProduct = 0 @endphp
                 @foreach ( $product as $file )
                 <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $incrementProduct+= 100 }}">
-                    <a href="{{ route('details_products', $file->slug) }}" class="component-products d-block">
+                    <a href="{{ route('details_products', $file->id) }}" class="component-products d-block">
                         <div class="products-thumbnail">
                             <div class="products-image" style="
-                                    background-image: url('{{ Storage::url($file->Gallery->name) }}')
+                                    background-image: url('{{ Storage::url($file->photo) }}')
                             "></div>
                         </div>
                         <div class="products-text">

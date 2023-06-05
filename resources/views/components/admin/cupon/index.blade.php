@@ -50,16 +50,15 @@ Cupon
                             <th>{{ $files->coupon_code }}</th>
                             <th>{{ $files->name }}</th>
                             <th>{{ $files->description }}</th>
+                            <th>{{ $files->discount }}%</th>
                             <th>{{ $files->expired }}</th>
                             <th>{{ $files->status }}</th>
-                            <th>{{ $files->discount }}</th>
                             <th>
                                 <input type="hidden" class="delete_id" value="{{ $files->id }}">
-                                <a href="{{ route('edit_category', $files->id) }}" class="btn btn-info">
+                                <a href="{{ route('edit_cupon', $files->id) }}" class="btn btn-info">
                                     <i class="fa fa-pencil-alt"></i>
                                 </a>
-                                <form action="{{ route('destroy_category', $files->id) }}" method="POST"
-                                    class="d-inline">
+                                <form action="{{ route('destroy_cupon', $files->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btndelete">
@@ -109,7 +108,7 @@ Cupon
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'category/delete/' + deleteid,
+                            url: 'coupon/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

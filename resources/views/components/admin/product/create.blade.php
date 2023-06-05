@@ -89,7 +89,7 @@ Product
                             <div class="form-group">
                                 <label>Kategori <br />
                                     @if ($category->isEmpty())
-                                    <code>Belum ada kategori klik <a href="{{ route('product-category.index') }}">disini</a> untuk menambah kategori.</code>
+                                    <code>Belum ada kategori klik <a href="{{ route('create_cataegory') }}">disini</a> untuk menambah kategori.</code>
                                     @endif
                                 </label>
                                 <div class="input-group">
@@ -176,9 +176,11 @@ Product
 @endsection
 
 @push('script')
+<script src="{{ url('assets/backend/js/cleave.min.js') }}"></script>
 <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('deskripsi');
 </script>
 <script src="{{ url('assets/backend/js/image_upload.js') }}"></script>
+<script src="{{ url('assets/backend/js/my_cleave.js') }}"></script>
 @endpush

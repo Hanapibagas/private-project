@@ -48,7 +48,6 @@ Store Homepage
                 <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="{{ $incrementCategory+= 100 }}">
                     <a href="" class="component-categories d-block">
                         <div class="categories-image">
-                            {{-- <img src="{{  Storage::url($category->photo) }}" alt="" class="w-100" /> --}}
                         </div>
                         <p class="categories-text">
                             {{ $file->name }}
@@ -70,10 +69,10 @@ Store Homepage
             <div class="row">
                 @foreach ( $product as $file )
                 <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up">
-                    <a href="" class="component-products d-block">
+                    <a href="{{ route('details_products', $file->id) }}" class="component-products d-block">
                         <div class="products-thumbnail">
                             <div class="products-image"
-                                style="background-image: url('{{ Storage::url($file->Gallery->name) }}');">
+                                style="background-image: url('{{ Storage::url($file->photo) }}');">
                             </div>
                         </div>
                         <div class="products-text">

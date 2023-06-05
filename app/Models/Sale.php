@@ -9,14 +9,14 @@ class Sale extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'product_id',
-        'transaction_code',
-        'product_price',
-        'quantity',
-        'total_price',
+        'transaction_code', 'product_id',
+        'product_price', 'quantity', 'total_price'
     ];
 
-    public function Product()
+    protected $hidden = [];
+
+    // Relasi
+    public function product()
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
