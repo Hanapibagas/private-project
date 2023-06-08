@@ -11,7 +11,7 @@ class Transaction extends Model
     protected $fillable = [
         'transaction_code', 'user_id', 'coupon_id',
         'discount', 'discount_price', 'sub_total',
-        'grand_total', 'paid', 'change', 'valid'
+        'grand_total', 'paid', 'change', 'valid', 'foto'
     ];
 
     protected $hidden = [];

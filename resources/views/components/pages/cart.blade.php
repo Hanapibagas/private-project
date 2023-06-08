@@ -279,6 +279,14 @@ Store Cart Page
                                 </div>
                             </form>
                         </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Informasi Nomor Tujuan</label>
+                                <div class="input-group mb-3">
+                                    <h6>1234567856789</h6>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <form action="{{ route('kirim_pesanan_product') }}" method="post">
                         @csrf
@@ -355,6 +363,15 @@ Store Cart Page
                                             </div>
                                             <input type="text" name="change" class="form-control currency" value="0"
                                                 readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Bukti pembayaran</label>
+                                        <div class="input-group mb-2">
+                                            {{-- <div class="input-group-prepend">
+                                                <div class="input-group-text">Rp.</div>
+                                            </div> --}}
+                                            <input type="file" name="paid" class="form-control" />
                                         </div>
                                     </div>
                                 </div>

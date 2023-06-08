@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('grand_total')->nullable();
             $table->integer('paid')->nullable();
             $table->integer('change')->nullable();
+            $table->string('foto')->nullable();
             $table->boolean('valid');
             $table->timestamps();
 
