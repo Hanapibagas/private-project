@@ -288,7 +288,7 @@ Store Cart Page
                             </div>
                         </div>
                     </div>
-                    <form action="{{ route('kirim_pesanan_product') }}" method="post">
+                    <form action="{{ route('kirim_pesanan_product') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="transaction_code" value="{{ $transactionCode }}" />
                 </div>
@@ -356,22 +356,12 @@ Store Cart Page
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Kembalian</label>
-                                        <div class="input-group mb-2">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">Rp.</div>
-                                            </div>
-                                            <input type="text" name="change" class="form-control currency" value="0"
-                                                readonly />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label>Bukti pembayaran</label>
                                         <div class="input-group mb-2">
                                             {{-- <div class="input-group-prepend">
                                                 <div class="input-group-text">Rp.</div>
                                             </div> --}}
-                                            <input type="file" name="paid" class="form-control" />
+                                            <input type="file" name="foto" class="form-control" />
                                         </div>
                                     </div>
                                 </div>

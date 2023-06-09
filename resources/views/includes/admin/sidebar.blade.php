@@ -30,9 +30,15 @@
         </div>
     </li>
     <hr class="sidebar-divider">
+    <li class="nav-item {{ request()->is('banner') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('index_banner') }}">
+            <i class="fas fa-fw fa-image"></i>
+            <span>Banner</span></a>
+    </li>
+    <hr class="sidebar-divider">
     <li class="nav-item {{ request()->is('daftar-costumer') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('index_costumer') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>Daftar Costumer</span></a>
     </li>
     <div class="text-center d-none d-md-inline">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CuponController;
 use App\Http\Controllers\Admin\DaftarCostumerController;
@@ -29,8 +30,15 @@ Route::middleware(['auth'])->group(function () {
 
 Auth::routes();
 
-Route::prefix('dashboard-admin')->middleware('auth', 'checkroll:admin')->group(function () {
-    Route::get('/', [DashboardController::class, 'dashboard_index'])->name('dashboard_index');
+Route::middleware('auth', 'checkroll:admin')->group(function () {
+    Route::get('/dashboard-admin', [DashboardController::class, 'dashboard_index'])->name('dashboard_index');
+    //
+    Route::get('/banner', [BannerController::class, 'index_banner'])->name('index_banner');
+    Route::get('/banner/create', [BannerController::class, 'create_banner'])->name('create_banner');
+    Route::get('/banner/edit/{id}', [BannerController::class, 'edit_banner'])->name('edit_banner');
+    Route::put('/banner/update/{id}', [BannerController::class, 'update_banner'])->name('update_banner');
+    Route::post('/banner/post', [BannerController::class, 'store_banner'])->name('store_banner');
+    Route::delete('/banner/delete/{id}', [BannerController::class, 'destroy_banner'])->name('destroy_banner');
     //
     Route::get('/coupon', [CuponController::class, 'index_cupon'])->name('index_cupon');
     Route::get('/coupon/create', [CuponController::class, 'create_cupon'])->name('create_cupon');

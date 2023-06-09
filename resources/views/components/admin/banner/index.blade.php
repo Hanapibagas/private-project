@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Costumer
+Banner
 @endsection
 
 @push('style')
@@ -21,7 +21,11 @@ Costumer
 
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Daftar castumer</h1>
+        <h1 class="h3 mb-0 text-gray-800">Daftar banner</h1>
+        <a href="{{ route('create_banner') }}" class="btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-plus fa-sm text-white-50"></i>
+            Tambah banner
+        </a>
     </div>
     <div class="row">
         <div class="card-body">
@@ -30,25 +34,24 @@ Costumer
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>Alamat</th>
-                            <th>No Telp</th>
+                            <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $user as $key => $files )
+                        @foreach ( $banner as $key => $files )
                         <tr>
-                            <th scope="row">{{ $key+1 }}</th>
-                            <th>{{ $files->name }}</th>
-                            <th>{{ $files->email }}</th>
-                            <th>{{ $files->alamat }}</th>
-                            <th>{{ $files->no_hp }}</th>
+                            <th>{{ $key+1 }}</th>
+                            <th>
+                                <img src="{{ Storage::url($files->banner) }}" alt="" style="width: 150px"
+                                    class="img-thumbnail">
+                            </th>
                             <th>
                                 <input type="hidden" class="delete_id" value="{{ $files->id }}">
-                                <form action="{{ route('destroy_category', $files->id) }}" method="POST"
-                                    class="d-inline">
+                                <a href="{{ route('edit_banner', $files->id) }}" class="btn btn-info">
+                                    <i class="fa fa-pencil-alt"></i>
+                                </a>
+                                <form action="{{ route('destroy_banner', $files->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btndelete">
@@ -98,7 +101,7 @@ Costumer
                         };
                         $.ajax({
                             type: "DELETE",
-                            url: 'category/delete/' + deleteid,
+                            url: 'banner/delete/' + deleteid,
                             data: data,
                             success: function (response) {
                                 swal(response.status, {

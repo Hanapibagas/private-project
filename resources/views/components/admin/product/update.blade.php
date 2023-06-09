@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-Berita
+Product
 @endsection
 
 @section('content')

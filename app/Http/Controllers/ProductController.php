@@ -238,6 +238,8 @@ class ProductController extends Controller
 
     public function kirim_pesanan_product(TransactionRequest $request)
     {
+        $photo = $request->file('foto');
+        // dd('foto');
         $request = $request->all();
 
         if ($request['coupon_code']) {
@@ -247,14 +249,23 @@ class ProductController extends Controller
             $data['coupon_id'] = null;
         }
 
+        if ($photo) {
+            $data['foto'] = $photo->store(
+                'assets/transaksi',
+                'public'
+            );
+        } else {
+            $data['foto'] = "";
+        }
+
+
         $data['user_id'] = Auth::user()->id;
-        // $data['customer_id'] = $request['customer_id'];
         $data['discount'] = $request['discount'];
         $data['sub_total'] = str_replace(',', '', $request['sub_total']);
         $data['discount_price'] = str_replace(',', '', $request['discount_price']);
         $data['grand_total'] = str_replace(',', '', $request['grand_total']);
         $data['paid'] = str_replace(',', '', $request['paid']);
-        $data['change'] = str_replace(',', '', $request['change']);
+        $data['foto'] = $data['foto'];
         $data['valid'] = TRUE;
 
         $transactionCode = now()->format('dmyHis') . Transaction::all()->count() . Auth::user()->id;
