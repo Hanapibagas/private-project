@@ -21,8 +21,9 @@ class User extends Authenticatable
         'name',
         'roles',
         'email',
+        'no_telpon',
         'alamat',
-        'no_hp',
+        'kode_referal',
         'password',
     ];
 

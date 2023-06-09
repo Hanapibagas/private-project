@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sale extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'transaction_code', 'product_id',
         'product_price', 'quantity', 'total_price'
@@ -15,7 +16,6 @@ class Sale extends Model
 
     protected $hidden = [];
 
-    // Relasi
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
