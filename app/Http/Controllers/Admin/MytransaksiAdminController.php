@@ -20,4 +20,11 @@ class MytransaksiAdminController extends Controller
         $details = Transaction::where('transaction_code', $transaction_code)->first();
         return view('components.admin.tranasksi-costumer.details-transaksi', compact('details'));
     }
+
+    public function getPemberuan(Request $request, $transaction_code)
+    {
+        Transaction::where('transaction_code', $transaction_code)->update([
+            'status' => $request->status
+        ]);
+    }
 }

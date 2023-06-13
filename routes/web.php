@@ -36,6 +36,7 @@ Route::middleware('auth', 'checkroll:admin')->group(function () {
     //
     Route::get('/transaksi', [MytransaksiAdminController::class, 'getIndex'])->name('index-transaksi');
     Route::get('/transaksi/details/{transaction_code}', [MytransaksiAdminController::class, 'getDetails'])->name('details_tranaksi');
+    Route::put('/transaksi/update/{transaction_code}', [MytransaksiAdminController::class, 'getPemberuan'])->name('update_transaksi');
     //
     Route::get('/banner', [BannerController::class, 'index_banner'])->name('index_banner');
     Route::get('/banner/create', [BannerController::class, 'create_banner'])->name('create_banner');
