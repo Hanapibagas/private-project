@@ -4,7 +4,7 @@
 Store Homepage
 @endsection
 
-@push('css')
+@push('cs')
 <style>
     .carousel {
         width: 100%;
@@ -46,11 +46,9 @@ Store Homepage
                 <div class="col-lg-12" data-aos="zoom-in">
                     <div class="carousel">
                         <div class="slides">
-                            <img src="{{ asset('assets/frontend/img/Desain Banner Ketenagakerjaan (1).png') }}"
-                                alt="Image 1">
-                            <img src="{{ asset('assets/frontend/img/banner.jpg') }}" alt="Image 2">
-                            <img src="{{ asset('assets/frontend/img/Desain Banner Ketenagakerjaan 2.png') }}"
-                                alt="Image 3">
+                            <img src="{{ asset('assets/frontend/images/banner.jpg') }}" alt="Image 1">
+                            <img src="{{ asset('assets/frontend/images/banner.jpg') }}" alt="Image 2">
+                            <img src="{{ asset('assets/frontend/images/banner.jpg') }}" alt="Image 3">
                         </div>
                         <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
                         <a class="next" onclick="changeSlide(1)">&#10095;</a>
@@ -67,7 +65,7 @@ Store Homepage
                 </div>
             </div>
             <div class="row">
-                {{-- @php $incrementCategory = 0 @endphp
+                @php $incrementCategory = 0 @endphp
                 @foreach ( $kategory as $file )
                 <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="{{ $incrementCategory+= 100 }}">
                     <a href="" class="component-categories d-block">
@@ -78,7 +76,7 @@ Store Homepage
                         </p>
                     </a>
                 </div>
-                @endforeach --}}
+                @endforeach
             </div>
         </div>
     </section>
@@ -91,7 +89,7 @@ Store Homepage
                 </div>
             </div>
             <div class="row">
-                {{-- @foreach ( $product as $file )
+                @foreach ( $product as $file )
                 <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up">
                     <a href="{{ route('details_products', $file->id) }}" class="component-products d-block">
                         <div class="products-thumbnail">
@@ -107,7 +105,7 @@ Store Homepage
                         </div>
                     </a>
                 </div>
-                @endforeach --}}
+                @endforeach
             </div>
         </div>
     </section>

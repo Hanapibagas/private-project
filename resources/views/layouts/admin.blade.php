@@ -21,7 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
-    @stack('css')
+    @stack('style')
 
 </head>
 
@@ -74,7 +74,7 @@
     </div>
 
     @include('includes.admin.script')
-    @stack('js')
+    @stack('script')
 
 </body>
 

@@ -39,7 +39,19 @@ Cupon
                                             <i class="fas fa-pencil-alt"></i>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                    <select class="form-control @error('user_id') is-invalid @enderror" name="user_id">
+                                        <option value="">-- Silahkan Pilih --</option>
+                                        @foreach ($users as $user)
+                                        <option value="{{ $user->id }}">
+                                            {{ $user->name }}
+                                        </option>
+                                        @error('category_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">

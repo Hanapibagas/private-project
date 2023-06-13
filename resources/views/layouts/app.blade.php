@@ -9,7 +9,7 @@
 
     <title>@yield('title')</title>
 
-    @include('includes.app.style')
+    @include('includes.pages.style')
 
     @stack('cs')
 
@@ -17,13 +17,13 @@
 
 <body>
 
-    @include('includes.app.navbar')
+    @include('includes.pages.navbar')
 
     @yield('content')
 
-    @include('includes.app.footer')
+    @include('includes.pages.footer')
 
-    @include('includes.app.script')
+    @include('includes.pages.script')
 
     @stack('js')
 

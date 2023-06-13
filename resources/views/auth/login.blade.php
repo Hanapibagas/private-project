@@ -13,7 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="{{ asset('asstes/backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 
 <body class="bg-gradient-primary">
@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block">
                                 <img style="margin-top: 80px; margin-left: 110px;"
-                                    src="{{ asset('asstes/backend/img/Asset-2@1080x-243x300.png') }}" alt="">
+                                    src="{{ asset('assets/backend/img/Asset-2@1080x-243x300.png') }}" alt="">
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">

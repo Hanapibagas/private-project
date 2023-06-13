@@ -10,10 +10,15 @@ class Coupon extends Model
     use HasFactory;
 
     protected $fillable = [
-        'coupon_code', 'name', 'description',
+        'coupon_code', 'user_id', 'description',
         'product_category_id', 'expired',
         'status', 'discount'
     ];
 
     protected $hidden = [];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

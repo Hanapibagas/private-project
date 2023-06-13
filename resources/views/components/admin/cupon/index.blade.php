@@ -34,8 +34,8 @@ Cupon
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode Kupon</th>
                             <th>Nama</th>
+                            <th>Kode Kupon</th>
                             <th>Keterangan</th>
                             <th>Diskon</th>
                             <th>Expired</th>
@@ -47,12 +47,16 @@ Cupon
                         @foreach ( $cupon as $key => $files )
                         <tr>
                             <th scope="row">{{ $key+1 }}</th>
+                            <th>{{ $files->User->name }}</th>
                             <th>{{ $files->coupon_code }}</th>
-                            <th>{{ $files->name }}</th>
                             <th>{{ $files->description }}</th>
                             <th>{{ $files->discount }}%</th>
-                            <th>{{ $files->expired }}</th>
-                            <th>{{ $files->status }}</th>
+                            <th>{{ date('d-m-Y', strtotime($files->expired)) }}</th>
+                            <th>
+                                <span class="badge badge-{{ $files->status == 1 ? 'success' : 'danger'}}">
+                                    {{ $files->status == 1 ? 'Aktif' : 'Tidak Aktif'}}
+                                </span>
+                            </th>
                             <th>
                                 <input type="hidden" class="delete_id" value="{{ $files->id }}">
                                 <a href="{{ route('edit_cupon', $files->id) }}" class="btn btn-info">
