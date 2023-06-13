@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CuponController;
 use App\Http\Controllers\Admin\DaftarCostumerController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\GalleryProductController;
+use App\Http\Controllers\Admin\MytransaksiAdminController;
 use App\Http\Controllers\Admin\ProductCotroller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyTransaksiController;
@@ -33,6 +33,9 @@ Auth::routes();
 
 Route::middleware('auth', 'checkroll:admin')->group(function () {
     Route::get('/dashboard-admin', [DashboardController::class, 'dashboard_index'])->name('dashboard_index');
+    //
+    Route::get('/transaksi', [MytransaksiAdminController::class, 'getIndex'])->name('index-transaksi');
+    Route::get('/transaksi/details/{transaction_code}', [MytransaksiAdminController::class, 'getDetails'])->name('details_tranaksi');
     //
     Route::get('/banner', [BannerController::class, 'index_banner'])->name('index_banner');
     Route::get('/banner/create', [BannerController::class, 'create_banner'])->name('create_banner');

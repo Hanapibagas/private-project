@@ -34,7 +34,8 @@ class CuponController extends Controller
     public function edit_cupon(Request $request, $id)
     {
         $item = Coupon::findOrFail($id);
-        return view('components.admin.cupon.update', compact('item'));
+        $users = User::all();
+        return view('components.admin.cupon.update', compact('item', 'users'));
     }
 
     public function update_cupon(Request $request, $id)

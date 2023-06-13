@@ -15,9 +15,13 @@ class Sale extends Model
 
     protected $hidden = [];
 
-    // Relasi
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
+
+    public function transakasi()
+    {
+        return $this->hasOne(Transaction::class, 'id', 'transaction_code');
     }
 }

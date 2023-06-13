@@ -43,7 +43,7 @@
     </li>
     <hr class="sidebar-divider">
     <li class="nav-item {{ request()->is('daftar-costumer') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('index_costumer') }}">
+        <a class="nav-link" href="{{ route('index-transaksi') }}">
             <i class="fas fa-fw fa-list-ul"></i>
             <span>Daftar Transaksi</span></a>
     </li>

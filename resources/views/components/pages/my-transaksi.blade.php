@@ -47,7 +47,11 @@
                                 <th>{{ $items->user->name }}</th>
                                 <th>{{ $items->discount }}</th>
                                 <th>{{ $items->sub_total }}</th>
-                                <th>{{ $items->status }}</th>
+                                <th>
+                                    <span class="badge badge-{{ $items->status == 1 ? 'success' : 'secondary'}}">
+                                        {{ $items->status == 1 ? 'Sudah di proses' : 'Sedang di proses'}}
+                                    </span>
+                                </th>
                             </tr>
                             @endforeach
                         </tbody>
