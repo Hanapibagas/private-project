@@ -75,7 +75,8 @@ Store Details Page
                     <div class="col-12 col-lg-8">
                         <ul class="list-unstyled">
                             <li class="media">
-                                <img src="/images/icons-testimonial-1.png" alt="" class="mr-3 rounded-circle" />
+                                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" alt=""
+                                    class="mr-3 rounded-circle" />
                                 <div class="media-body">
                                     <h5 class="mt-2 mb-1">Hazza Risky</h5>
                                     I thought it was not good for living room. I really happy
@@ -84,7 +85,8 @@ Store Details Page
                                 </div>
                             </li>
                             <li class="media">
-                                <img src="/images/icons-testimonial-2.png" alt="" class="mr-3 rounded-circle" />
+                                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" alt=""
+                                    class="mr-3 rounded-circle" />
                                 <div class="media-body">
                                     <h5 class="mt-2 mb-1">Anna Sukkirata</h5>
                                     Color is great with the minimalist concept. Even I thought
@@ -93,7 +95,8 @@ Store Details Page
                                 </div>
                             </li>
                             <li class="media">
-                                <img src="/images/icons-testimonial-3.png" alt="" class="mr-3 rounded-circle" />
+                                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" alt=""
+                                    class="mr-3 rounded-circle" />
                                 <div class="media-body">
                                     <h5 class="mt-2 mb-1">Dakimu Wangi</h5>
                                     When I saw at first, it was really awesome to have with.

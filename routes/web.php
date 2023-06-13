@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GalleryProductController;
 use App\Http\Controllers\Admin\ProductCotroller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MyTransaksiController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/transaction/post-pesanan', [ProductController::class, 'kirim_pesanan_product'])->name('kirim_pesanan_product');
 
     Route::get('/transaction/success', [ProductController::class, 'success'])->name('success');
-    Route::get('/my-transaksi/{id}', [ProductController::class, 'my_transaksi'])->name('my_transaksi');
+    Route::get('/my-transaksi', [MyTransaksiController::class, 'getIndex'])->name('get-index');
 });
 
 

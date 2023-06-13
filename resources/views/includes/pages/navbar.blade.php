@@ -15,16 +15,11 @@
                     <a href="{{ route('category1') }}" class="nav-link">Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Rewards</a>
-                </li>
-                @guest
-                <li class="nav-item">
-                    <a href="{{ route('register') }}" class="nav-link">Sign Up</a>
+                    <a href="{{ route('get-index') }}" class="nav-link">My Transaksi</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{  route('login') }}" class="btn btn-success nav-link px-4 text-white">Sign In</a>
+                    <a>{{ Auth::user()->name }}</a>
                 </li>
-                @endguest
             </ul>
         </div>
     </div>

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('paid')->nullable();
             $table->integer('change')->nullable();
             $table->string('foto')->nullable();
+            $table->string('status')->default('PENDING');
             $table->boolean('valid');
             $table->timestamps();
 

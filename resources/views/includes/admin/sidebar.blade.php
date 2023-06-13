@@ -41,6 +41,12 @@
             <i class="fas fa-fw fa-users"></i>
             <span>Daftar Costumer</span></a>
     </li>
+    <hr class="sidebar-divider">
+    <li class="nav-item {{ request()->is('daftar-costumer') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('index_costumer') }}">
+            <i class="fas fa-fw fa-list-ul"></i>
+            <span>Daftar Transaksi</span></a>
+    </li>
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
