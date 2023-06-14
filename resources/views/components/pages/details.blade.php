@@ -69,42 +69,38 @@ Store Details Page
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-8 mt-3 mb-3">
-                        <h5>Customer Review (3)</h5>
+                        <h5>Customer Review ({{ $jumlah }})</h5>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-8">
                         <ul class="list-unstyled">
+                            @forelse ( $riview as $riviews )
                             <li class="media">
                                 <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" alt=""
                                     class="mr-3 rounded-circle" />
                                 <div class="media-body">
-                                    <h5 class="mt-2 mb-1">Hazza Risky</h5>
-                                    I thought it was not good for living room. I really happy
-                                    to decided buy this product last week now feels like
-                                    homey.
+                                    <h5 class="mt-2 mb-1">{{ $riviews->User->name }}</h5>
+                                    {{ $riviews->ulasan }}
                                 </div>
                             </li>
-                            <li class="media">
-                                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" alt=""
-                                    class="mr-3 rounded-circle" />
-                                <div class="media-body">
-                                    <h5 class="mt-2 mb-1">Anna Sukkirata</h5>
-                                    Color is great with the minimalist concept. Even I thought
-                                    it was made by Cactus industry. I do really satisfied with
-                                    this.
-                                </div>
+                            @empty
+                            <li>
+                                <h2>Belum Ada Ulasan</h2>
                             </li>
-                            <li class="media">
-                                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" alt=""
-                                    class="mr-3 rounded-circle" />
-                                <div class="media-body">
-                                    <h5 class="mt-2 mb-1">Dakimu Wangi</h5>
-                                    When I saw at first, it was really awesome to have with.
-                                    Just let me know if there is another upcoming product like
-                                    this.
+                            @endforelse
+                            <div class="row" data-aos="fade-up" data-aos-delay="200">
+                                {{-- <div class="col-8 col-md-3">
+                                    <a href="" class="btn btn-secondary mt-4 px-4 btn-block">
+                                        See more
+                                    </a>
+                                </div> --}}
+                                <div class="col-8 col-md-3">
+                                    <a href="{{ route('riview-product') }}" class="btn btn-success mt-4 px-4 btn-block">
+                                        give a review
+                                    </a>
                                 </div>
-                            </li>
+                            </div>
                         </ul>
                     </div>
                 </div>

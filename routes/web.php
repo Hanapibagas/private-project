@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CuponController;
 use App\Http\Controllers\Admin\DaftarCostumerController;
+use App\Http\Controllers\Admin\DaftarRiviewController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MytransaksiAdminController;
 use App\Http\Controllers\Admin\ProductCotroller;
@@ -11,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyTransaksiController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RiviewProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'getProfile'])->name('index-profile');
     Route::put('/profile/update', [ProfileController::class, 'getUpdatePaswword'])->name('update-password-profile');
 
+    Route::get('/riview-product', [RiviewProductController::class, 'getRiviewProduct'])->name('riview-product');
+    Route::post('/riview-product/store', [RiviewProductController::class, 'getStoreRiview'])->name('store-riview-product');
+
     Route::get('/transaction/success', [ProductController::class, 'success'])->name('success');
     Route::get('/my-transaksi', [MyTransaksiController::class, 'getIndex'])->name('get-index');
 });
@@ -37,6 +42,9 @@ Auth::routes();
 
 Route::middleware('auth', 'checkroll:admin')->group(function () {
     Route::get('/dashboard-admin', [DashboardController::class, 'dashboard_index'])->name('dashboard_index');
+    //
+    Route::get('/riview', [DaftarRiviewController::class, 'getIndex'])->name('index-riview');
+    Route::get('/riview/details/{id}', [DaftarRiviewController::class, 'getDetails'])->name('details-riview');
     //
     Route::get('/transaksi', [MytransaksiAdminController::class, 'getIndex'])->name('index-transaksi');
     Route::get('/transaksi/details/{transaction_code}', [MytransaksiAdminController::class, 'getDetails'])->name('details_tranaksi');

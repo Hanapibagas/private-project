@@ -7,6 +7,7 @@ use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductGallery;
+use App\Models\RiviewProduct;
 use App\Models\Sale;
 use App\Models\Transaction;
 use App\Models\User;
@@ -27,7 +28,9 @@ class ProductController extends Controller
     public function details_products(Request $request, $id)
     {
         $product = Product::where('id', $id)->firstOrFail();
-        return view('components.pages.details', compact('product'));
+        $riview = RiviewProduct::where('product_id', $id)->paginate(5);
+        $jumlah = RiviewProduct::where('product_id', $id)->count();
+        return view('components.pages.details', compact('product', 'riview', 'jumlah'));
     }
 
     public function isi_form_pemesanan($transactionCode)

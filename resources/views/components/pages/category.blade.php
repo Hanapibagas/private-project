@@ -5,6 +5,15 @@ Store Category Page
 @endsection
 
 @section('content')
+@if (session('status'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Sukses!',
+        text : "{{ session('status') }}",
+    });
+</script>
+@endif
 <div class="page-content page-home">
     <section class="store-trend-categories">
         <div class="container">
