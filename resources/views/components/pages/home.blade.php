@@ -46,9 +46,12 @@ Store Homepage
                 <div class="col-lg-12" data-aos="zoom-in">
                     <div class="carousel">
                         <div class="slides">
-                            <img src="{{ asset('assets/frontend/images/banner.jpg') }}" alt="Image 1">
-                            <img src="{{ asset('assets/frontend/images/banner.jpg') }}" alt="Image 2">
-                            <img src="{{ asset('assets/frontend/images/banner.jpg') }}" alt="Image 3">
+                            @php
+                            $i = 1;
+                            @endphp
+                            @foreach ( $banner as $files )
+                            <img src="{{ Storage::url($files->banner) }}" alt="Image {{ $i++ }}">
+                            @endforeach
                         </div>
                         <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
                         <a class="next" onclick="changeSlide(1)">&#10095;</a>

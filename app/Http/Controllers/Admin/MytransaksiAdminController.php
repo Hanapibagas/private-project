@@ -26,5 +26,7 @@ class MytransaksiAdminController extends Controller
         Transaction::where('transaction_code', $transaction_code)->update([
             'status' => $request->status
         ]);
+
+        return redirect()->route('index-transaksi')->with('status', 'Selamat data transaksi berhasil di update');
     }
 }

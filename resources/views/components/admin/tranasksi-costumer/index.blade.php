@@ -9,6 +9,15 @@ Transaksi
 @endpush
 
 @section('content')
+@if (session('status'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Sukses!',
+        text : "{{ session('status') }}",
+    });
+</script>
+@endif
 
 <div class="container-fluid">
     <div class="row">

@@ -47,6 +47,7 @@ Store Details Page
                         <p>{{ $product->product_code }}</p>
                     </div>
                     <div class="col-lg-2" data-aos="zoom-in">
+                        <p>Stok : {{ $product->stock }}</p>
                         <a href="{{ route('isi_form_pemesanan', AppHelper::transaction_code()) }}"
                             class="btn btn-success px-4 text-white btn-block mb-3">
                             Isi Form pemesanan

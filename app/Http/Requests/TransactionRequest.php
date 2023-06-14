@@ -30,7 +30,7 @@ class TransactionRequest extends FormRequest
             'discount_price' => 'required',
             'sub_total' => 'required',
             'grand_total' => 'required',
-            'paid' => 'required',
+            // 'paid' => 'required',
             'foto' => 'required',
             // 'change' => 'string'
         ];

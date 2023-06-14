@@ -46,6 +46,7 @@ Details Transaksi
                                 </option>
                                 <option value="">-- Silahkan pilih --</option>
                                 <option value="1">Terima pesanan</option>
+                                <option value="0">Tolak pesanan</option>
                             </select>
                         </td>
                     </tr>

@@ -186,14 +186,21 @@ Store Cart Page
                                 @csrf
                                 <input type="hidden" name="transaction_code" value="{{ $transactionCode }}">
                                 <div class="form-group">
-                                    <label>Kupon <code>(Jika ada)</code></label>
+                                    <label>voucher tersedia <code>(Jika ada)</code></label>
                                     <div class="input-group mb-3">
-                                        <input type="text" name="coupon_code" class="form-control"
+                                        {{-- <input type="text" name="coupon_code" class="form-control"
                                             onkeyup="this.value = this.value.toUpperCase();"
                                             onkeypress="return event.charCode != 32"
-                                            value="{{ session('coupon_code') }}">
+                                            value="{{ session('coupon_code') }}"> --}}
+                                        <select class="form-control" name="coupon_code">
+                                            <option value="">-- Silahkan pilih --</option>
+                                            @foreach ( $kupon as $kupons )
+                                            <option value="{{ $kupons->coupon_code }}">{{ $kupons->coupon_code }}
+                                            </option>
+                                            @endforeach
+                                        </select>
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="submit">Cek</button>
+                                            <button class="btn btn-primary" type="submit">Gunakan</button>
                                         </div>
                                     </div>
                                 </div>
@@ -219,6 +226,51 @@ Store Cart Page
                         </div>
                         <div class="card-body">
                             <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Nama Lengkap</label>
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"></div>
+                                            </div>
+                                            <input type="text" name="discount" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>No.Tlpn</label>
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"></div>
+                                            </div>
+                                            <input type="text" name="discount" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Metode Pembayaran</label>
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"></div>
+                                            </div>
+                                            <select name="" class="form-control">
+                                                <option value="">-- Silahkan Pilih --</option>
+                                                <option value="JNT">JNT</option>
+                                                <option value="JNE">JNE</option>
+                                                <option value="COD">COD</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Alamat</label>
+                                        <div class="input-group mb-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"></div>
+                                            </div>
+                                            <textarea type="text" name="discount" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-lg-4">
                                     <input type="hidden" name="coupon_code" value="{{ session('coupon_code') }}" />
                                     <div class="form-group">
@@ -267,20 +319,8 @@ Store Cart Page
                                 </div>
                                 <div class="col-lg">
                                     <div class="form-group">
-                                        <label>Dibayar</label>
-                                        <div class="input-group mb-2">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">Rp.</div>
-                                            </div>
-                                            <input type="text" name="paid" class="form-control currency" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label>Bukti pembayaran</label>
                                         <div class="input-group mb-2">
-                                            {{-- <div class="input-group-prepend">
-                                                <div class="input-group-text">Rp.</div>
-                                            </div> --}}
                                             <input type="file" name="foto" class="form-control" />
                                         </div>
                                     </div>
@@ -294,7 +334,7 @@ Store Cart Page
 
             <div class="text-right">
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                <button type="submit" class="btn btn-primary" id="createTransaction" disabled>Buat Transaksi</button>
+                <button type="submit" class="btn btn-primary" id="createTransaction">Buat Transaksi</button>
             </div>
             </form>
             {{-- batas --}}

@@ -43,12 +43,14 @@ class ProductController extends Controller
         $subTotal = $sales->sum('total_price');
 
         $user = User::all();
+        $kupon = Coupon::where('user_id', Auth::user()->id)->get();
 
         return view('components.pages.cart', [
             'title' => $title,
             'transactionCode' => $transactionCode,
             'items' => $items,
             'user' => $user,
+            'kupon' => $kupon,
             'subTotal' => $subTotal
         ]);
     }
@@ -258,13 +260,12 @@ class ProductController extends Controller
             $data['foto'] = "";
         }
 
-
         $data['user_id'] = Auth::user()->id;
         $data['discount'] = $request['discount'];
         $data['sub_total'] = str_replace(',', '', $request['sub_total']);
         $data['discount_price'] = str_replace(',', '', $request['discount_price']);
         $data['grand_total'] = str_replace(',', '', $request['grand_total']);
-        $data['paid'] = str_replace(',', '', $request['paid']);
+        // $data['paid'] = str_replace(',', '', $request['paid']);
         $data['foto'] = $data['foto'];
         $data['valid'] = TRUE;
 
