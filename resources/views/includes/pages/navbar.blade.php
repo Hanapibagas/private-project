@@ -14,8 +14,11 @@
                 <li class="nav-item {{ request()->is('prodcut-home') ? 'active' : '' }}">
                     <a href="{{ route('category1') }}" class="nav-link">Categories</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is('my-transaksi') ? 'active' : '' }}">
                     <a href="{{ route('get-index') }}" class="nav-link">My Transaksi</a>
+                </li>
+                <li class="nav-item {{ request()->is('profile') ? 'active' : '' }}">
+                    <a href="{{ route('index-profile') }}" class="nav-link">My Profile</a>
                 </li>
                 <li class="nav-item">
                     <a>{{ Auth::user()->name }}</a>

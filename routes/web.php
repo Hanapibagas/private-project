@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/transaction/post-pesanan', [ProductController::class, 'kirim_pesanan_product'])->name('kirim_pesanan_product');
 
     Route::get('/profile', [ProfileController::class, 'getProfile'])->name('index-profile');
+    Route::put('/profile/update', [ProfileController::class, 'getUpdatePaswword'])->name('update-password-profile');
 
     Route::get('/transaction/success', [ProductController::class, 'success'])->name('success');
     Route::get('/my-transaksi', [MyTransaksiController::class, 'getIndex'])->name('get-index');
