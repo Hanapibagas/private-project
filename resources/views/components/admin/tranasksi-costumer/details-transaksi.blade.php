@@ -50,7 +50,7 @@ Details Transaksi
                         </td>
                     </tr>
                     <tr>
-                        <th>Metode Pembayaran</th>
+                        <th>Metode Pembayaran/Pengirmiman</th>
                         <td>{{ $details->metode_pembayaran }}</td>
                     </tr>
                     <tr>

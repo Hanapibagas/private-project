@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\KirimEmail;
 use App\Models\Coupon;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CuponController extends Controller
 {
@@ -23,10 +25,17 @@ class CuponController extends Controller
 
     public function store_cupon(Request $request)
     {
-        $data = $request->all();
-        $data['coupon_code'] = strtoupper(str_replace(' ', '', $data['coupon_code']));
+        $user = User::find($request->input('user_id'));
 
-        Coupon::create($data);
+        Coupon::create([
+            'user_id' => $request->input('user_id'),
+            'coupon_code' => $request->input('coupon_code'),
+            'description' => $request->input('description'),
+            'expired' => $request->input('expired'),
+            'status' => $request->input('status'),
+            'discount' => $request->input('discount'),
+        ]);
+        Mail::to($user->email)->send(new KirimEmail($request->status, "Hello", $user->name));
 
         return redirect()->route('index_cupon')->with('status', 'Selamat data product berhasil ditambahkan');
     }
