@@ -233,7 +233,7 @@ Store Cart Page
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"></div>
                                             </div>
-                                            <input type="text" name="discount" class="form-control">
+                                            <input type="text" name="nama_lengkap" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -242,7 +242,7 @@ Store Cart Page
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"></div>
                                             </div>
-                                            <input type="text" name="discount" class="form-control">
+                                            <input type="text" name="no_telpn" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -253,10 +253,9 @@ Store Cart Page
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"></div>
                                             </div>
-                                            <select name="" class="form-control">
+                                            <select name="metode_pembayaran" class="form-control">
                                                 <option value="">-- Silahkan Pilih --</option>
-                                                <option value="JNT">JNT</option>
-                                                <option value="JNE">JNE</option>
+                                                <option value="TRANSFER">Transfer</option>
                                                 <option value="COD">COD</option>
                                             </select>
                                         </div>
@@ -267,7 +266,7 @@ Store Cart Page
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"></div>
                                             </div>
-                                            <textarea type="text" name="discount" class="form-control"></textarea>
+                                            <textarea type="text" name="alamat" class="form-control"></textarea>
                                         </div>
                                     </div>
                                 </div>

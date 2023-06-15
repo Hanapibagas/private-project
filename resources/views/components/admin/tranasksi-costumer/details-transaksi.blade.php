@@ -20,8 +20,20 @@ Details Transaksi
                         <td>{{ $details->transaction_code }}</td>
                     </tr>
                     <tr>
-                        <th>Pembeli</th>
+                        <th>Nama Penngguna</th>
                         <td>{{ $details->user->name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama Lengkap Pemebeli</th>
+                        <td>{{ $details->nama_lengkap }}</td>
+                    </tr>
+                    <tr>
+                        <th>Alamat</th>
+                        <td>{{ $details->alamat}}</td>
+                    </tr>
+                    <tr>
+                        <th>No. Tlpn</th>
+                        <td>{{ $details->no_telpn }}</td>
                     </tr>
                     <tr>
                         <th>Diskon</th>
@@ -34,8 +46,12 @@ Details Transaksi
                     <tr>
                         <th>Bukti Pembayaran</th>
                         <td>
-                            <img src="{{ Storage::url($details->foto) }}" alt="" srcset="">
+                            <img width="200px;" src="{{ Storage::url($details->foto) }}" alt="" srcset="">
                         </td>
+                    </tr>
+                    <tr>
+                        <th>Metode Pembayaran</th>
+                        <td>{{ $details->metode_pembayaran }}</td>
                     </tr>
                     <tr>
                         <th>Status Transaksi</th>

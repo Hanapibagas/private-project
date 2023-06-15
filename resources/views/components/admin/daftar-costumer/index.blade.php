@@ -33,7 +33,8 @@ Costumer
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Alamat</th>
-                            <th>No Telp</th>
+                            <th>No. Telp</th>
+                            <th>Kode referal</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -44,6 +45,7 @@ Costumer
                             <th>{{ $files->name }}</th>
                             <th>{{ $files->email }}</th>
                             <th>{{ $files->alamat }}</th>
+                            <th>{{ $files->kode_referal }}</th>
                             <th>{{ $files->no_hp }}</th>
                             <th>
                                 <input type="hidden" class="delete_id" value="{{ $files->id }}">

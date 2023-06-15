@@ -265,13 +265,16 @@ class ProductController extends Controller
 
         $data['user_id'] = Auth::user()->id;
         $data['discount'] = $request['discount'];
+        $data['nama_lengkap'] = $request['nama_lengkap'];
+        $data['no_telpn'] = $request['no_telpn'];
+        $data['alamat'] = $request['alamat'];
+        $data['metode_pembayaran'] = $request['metode_pembayaran'];
         $data['sub_total'] = str_replace(',', '', $request['sub_total']);
         $data['discount_price'] = str_replace(',', '', $request['discount_price']);
         $data['grand_total'] = str_replace(',', '', $request['grand_total']);
         // $data['paid'] = str_replace(',', '', $request['paid']);
         $data['foto'] = $data['foto'];
         $data['valid'] = TRUE;
-
         $transactionCode = now()->format('dmyHis') . Transaction::all()->count() . Auth::user()->id;
 
         Transaction::where('transaction_code', $request['transaction_code'])
