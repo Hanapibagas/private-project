@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\MytransaksiAdminController;
 use App\Http\Controllers\Admin\ProductCotroller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyTransaksiController;
+use App\Http\Controllers\Owner\DashboardController as OwnerDashboardController;
+use App\Http\Controllers\Owner\TransaksiOwnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RiviewProductController;
@@ -79,4 +81,11 @@ Route::middleware('auth', 'checkroll:admin')->group(function () {
     Route::put('/category/post/{id}', [CategoryController::class, 'update_category'])->name('update_category');
     Route::post('/category/post', [CategoryController::class, 'store_category'])->name('store_category');
     Route::delete('/category/delete/{id}', [CategoryController::class, 'destroy_category'])->name('destroy_category');
+});
+
+Route::middleware('auth', 'checkroll:owner')->group(function () {
+    Route::get('/dashboard-owner', [OwnerDashboardController::class, 'getIndex'])->name('dashboard-owner');
+    //
+    Route::get('/transaksi-owner', [TransaksiOwnerController::class, 'getIndex'])->name('index-owner');
+    Route::get('/transaksi-owner/exportPDF', [TransaksiOwnerController::class, 'getExportPDF'])->name('getExportPDF');
 });
