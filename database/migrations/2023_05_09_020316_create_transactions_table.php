@@ -14,26 +14,25 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->string('transaction_code')->primary();
+            $table->id();
+
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('coupon_id')->nullable()->unsigned();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('coupon_id')->references('id')->on('coupons');
+
             $table->integer('discount')->nullable();
             $table->integer('discount_price')->nullable();
-            $table->integer('sub_total')->nullable();
-            $table->integer('grand_total')->nullable();
-            $table->integer('paid')->nullable();
-            $table->integer('change')->nullable();
+            $table->integer('total')->nullable();
+
             $table->string('foto')->nullable();
             $table->string('metode_pembayaran')->nullable();
             $table->string('alamat')->nullable();
             $table->string('no_telpn')->nullable();
             $table->string('nama_lengkap')->nullable();
             $table->integer('status')->default('0');
-            $table->boolean('valid');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('coupon_id')->references('id')->on('coupons');
         });
     }
 

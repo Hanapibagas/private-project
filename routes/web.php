@@ -22,11 +22,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index1');
     Route::get('/prodcut-home', [ProductController::class, 'category'])->name('category1');
     Route::get('/prodcut-home/details/{slug}', [ProductController::class, 'details_products'])->name('details_products');
-    Route::get('/transaction/create/{transaction_code?}', [ProductController::class, 'isi_form_pemesanan'])->name('isi_form_pemesanan');
+
+    Route::get('/my-cart', [ProductController::class, 'getCart'])->name('getCart');
+    Route::post('/tambah-barang/{id}', [ProductController::class, 'storeCart'])->name('storeCart');
+    Route::put('/my-cart/update/{id}', [ProductController::class, 'getUpdateCart'])->name('getUpdateCart');
+    Route::delete('/my-cart/delete/{id}', [ProductController::class, 'getDeleteCart'])->name('getDeleteCart');
+    Route::post('/my-cart/checkout', [ProductController::class, 'getCheckOut'])->name('getCheckOut');
+    Route::post('/my-transaksi/get-kupon', [ProductController::class, 'getKupon'])->name('getKupon');
+
+
+
     Route::post('/transaction/post', [ProductController::class, 'add_cart'])->name('add_cart');
     Route::delete('/transaction/delete/{id}', [ProductController::class, 'delete_pesanan'])->name('delete_pesanan');
     Route::put('/transaction/update/pesanan/{id}', [ProductController::class, 'update_pesanan'])->name('update_pesanan');
-    Route::post('/sale/getCoupon', [ProductController::class, 'getCoupon'])->name('get_coupon');
     Route::post('/transaction/post-pesanan', [ProductController::class, 'kirim_pesanan_product'])->name('kirim_pesanan_product');
 
     Route::get('/profile', [ProfileController::class, 'getProfile'])->name('index-profile');

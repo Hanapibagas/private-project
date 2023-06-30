@@ -5,6 +5,25 @@ Store Details Page
 @endsection
 
 @section('content')
+@if (session('status'))
+<script>
+    Swal.fire({
+                icon: 'success',
+                title: 'Sukses!',
+                text: "{{ session('status') }}",
+            });
+</script>
+@endif
+
+@if (session('warning'))
+<script>
+    Swal.fire({
+                icon: 'warning',
+                title: 'Warning!',
+                text: "{{ session('warning') }}",
+            });
+</script>
+@endif
 <div class="page-content page-details">
     <section class="store-breadcrumbs" data-aos="fade-down" data-aos-delay="100">
         <div class="container">
@@ -38,24 +57,28 @@ Store Details Page
     </section>
 
     <div class=" store-details-container" data-aos="fade-up">
-        <section class="store-heading">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <h1>{{ $product->name }} </h1>
-                        <div class="price">${{ number_format($product->selling_price) }}</div>
-                        <p>{{ $product->product_code }}</p>
-                    </div>
-                    <div class="col-lg-2" data-aos="zoom-in">
-                        <p>Stok : {{ $product->stock }}</p>
-                        <a href="{{ route('isi_form_pemesanan', AppHelper::transaction_code()) }}"
-                            class="btn btn-success px-4 text-white btn-block mb-3">
-                            Isi Form pemesanan
-                        </a>
+        <form action="{{ route('storeCart', $product->id) }}" method="POST">
+            @csrf
+            <input type="hidden" name="product_id" value="{{ $product->id }}">
+            <input type="hidden" name="product_price">
+            <section class="store-heading">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h1>{{ $product->name }} </h1>
+                            <div class="price">${{ number_format($product->selling_price) }}</div>
+                            <p>{{ $product->product_code }}</p>
+                        </div>
+                        <div class="col-lg-2" data-aos="zoom-in">
+                            <p>Stok : {{ $product->stock }}</p>
+                            <button type="submit" class="btn btn-success px-4 text-white btn-block mb-3">
+                                Masukkan Ke keranjang
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </form>
         <section class="store-description">
             <div class="container">
                 <div class="row" style="margin-top: -7px;">

@@ -5,23 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sale extends Model
+class Cart extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'transaction_code', 'product_id',
-        'product_price', 'quantity', 'total_price'
-    ];
 
-    protected $hidden = [];
+    protected $fillable = [
+        'user_id',
+        'product_id',
+        'product_price',
+        'quantity', 'total_price'
+    ];
 
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
-    }
-
-    public function transakasi()
-    {
-        return $this->hasOne(Transaction::class, 'id', 'transaction_code');
     }
 }

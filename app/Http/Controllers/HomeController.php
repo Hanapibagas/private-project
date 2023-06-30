@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Cart;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductGallery;
