@@ -28,8 +28,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/my-cart/update/{id}', [ProductController::class, 'getUpdateCart'])->name('getUpdateCart');
     Route::delete('/my-cart/delete/{id}', [ProductController::class, 'getDeleteCart'])->name('getDeleteCart');
     Route::post('/my-cart/checkout', [ProductController::class, 'getCheckOut'])->name('getCheckOut');
-    Route::post('/my-transaksi/get-kupon', [ProductController::class, 'getKupon'])->name('getKupon');
+    Route::post('/my-cart/get-kupon', [ProductController::class, 'getKuponInfo'])->name('getKuponInfo');
 
+    Route::get('/my-transaksi', [MyTransaksiController::class, 'getIndex'])->name('get-index');
 
 
     Route::post('/transaction/post', [ProductController::class, 'add_cart'])->name('add_cart');
@@ -44,7 +45,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/riview-product/store', [RiviewProductController::class, 'getStoreRiview'])->name('store-riview-product');
 
     Route::get('/transaction/success', [ProductController::class, 'success'])->name('success');
-    Route::get('/my-transaksi', [MyTransaksiController::class, 'getIndex'])->name('get-index');
 });
 
 

@@ -9,9 +9,17 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'transaction_code', 'user_id', 'coupon_id',
-        'discount', 'discount_price', 'sub_total',
-        'grand_total', 'paid', 'change', 'valid', 'foto', 'status', 'nama_lengkap', 'no_telpn', 'alamat', 'metode_pembayaran'
+        'user_id',
+        'discount',
+        'discount_price',
+        'sub_total',
+        'grand_total',
+        'foto',
+        'status',
+        'nama_lengkap',
+        'no_telpn',
+        'alamat',
+        'metode_pembayaran'
     ];
 
     protected $hidden = [];

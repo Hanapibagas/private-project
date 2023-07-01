@@ -16,7 +16,7 @@
                     <a href="{{ route('category1') }}" class="nav-link">Product</a>
                 </li>
                 <li class="nav-item {{ request()->is('') ? 'active' : '' }}">
-                    <a href="" class="nav-link">My Transaksi</a>
+                    <a href="{{ route('get-index') }}" class="nav-link">My Transaksi</a>
                 </li>
                 @php
                 use App\Models\Cart;

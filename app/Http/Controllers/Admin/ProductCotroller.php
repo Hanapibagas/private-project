@@ -25,23 +25,25 @@ class ProductCotroller extends Controller
 
     public function store_product(ProductRequest $request)
     {
-        $photo = $request->file('photo');
-
         $data = $request->all();
 
-        if ($photo) {
-            $data['photo'] = $photo->store(
-                'assets/product',
-                'public'
-            );
-        } else {
-            $data['photo'] = "";
-        }
+        // Upload foto
+        $photoPath = $request->file('photo')->store('photos');
 
-        $data['purchase_price'] = str_replace(',', '', $data['purchase_price']);
-        $data['selling_price'] = str_replace(',', '', $data['selling_price']);
+        // Simpan data produk
+        $product = new Product;
+        $product->photo = $photoPath;
+        $product->category_id = $request->category_id;
+        $product->product_code = $request->product_code;
+        $product->name = $request->name;
+        $product->stock = $request->stock;
+        $product->purchase_price = str_replace(',', '', $data['purchase_price']);
+        $product->selling_price = str_replace(',', '', $data['selling_price']);
+        $product->deskripsi = $request->deskripsi;
+        $product->save();
 
-        Product::create($data);
+
+        dd($request->all());
 
         return redirect()->route('index_product')->with('status', 'Selamat data product berhasil ditambahkan');
     }

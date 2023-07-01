@@ -17,14 +17,12 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('coupon_id')->nullable()->unsigned();
-
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('coupon_id')->references('id')->on('coupons');
 
             $table->integer('discount')->nullable();
             $table->integer('discount_price')->nullable();
-            $table->integer('total')->nullable();
+            $table->integer('sub_total')->nullable();
+            $table->integer('grand_total')->nullable();;
 
             $table->string('foto')->nullable();
             $table->string('metode_pembayaran')->nullable();

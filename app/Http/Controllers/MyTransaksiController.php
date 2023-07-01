@@ -11,7 +11,6 @@ class MyTransaksiController extends Controller
     public function getIndex()
     {
         $transaksi = Transaction::where('user_id', Auth::user()->id)->get();
-        // dd($transaksi);
         return view('components.pages.my-transaksi', compact('transaksi'));
     }
 }
