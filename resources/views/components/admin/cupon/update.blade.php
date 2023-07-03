@@ -30,31 +30,7 @@ Cupon
                     @endif
 
                     <div class="row">
-
                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Nama</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </div>
-                                    </div>
-                                    <select class="form-control @error('user_id') is-invalid @enderror" name="user_id">
-                                        <option value="">-- Silahkan Pilih --</option>
-                                        @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">
-                                            {{ $user->name }}
-                                        </option>
-                                        @error('category_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label>Kode Kupon</label>
                                 <div class="input-group">
@@ -112,12 +88,6 @@ Cupon
                                     <input type="number" class="form-control" name="discount"
                                         onKeyPress="if(this.value >= 100) return false;" value="{{ $item->discount}}" />
                                 </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Keterangan</label>
-                                <textarea class="form-control" name="description"
-                                    rows="10">{{ $item->description }}</textarea>
                             </div>
                         </div>
                     </div>

@@ -127,15 +127,13 @@ class ProductController extends Controller
             'alamat' => 'required',
             'metode_pembayaran' => 'required',
             'no_telpn' => 'required',
-            'foto' => 'image|mimes:jpg,png',
+            'foto' => 'mimes:jpg,png',
         ], $message);
+
+        $file = null;
 
         if ($request->file('foto')) {
             $file = $request->file('foto')->store('bukti-pembayaran', 'public');
-        }
-
-        if ($request->file('banner') === null) {
-            $file = $request->banner;
         }
 
         $transaksi = Transaction::create([
@@ -162,7 +160,7 @@ class ProductController extends Controller
             $cartItem->delete();
         }
 
-        return redirect()->back()->with('status', 'Silahkan isi alamat lengkap dibawah ini');
+        return redirect()->route('get-index')->with('status', 'Selamat transaksi anda segera kami proses');
     }
 
     public function getKuponInfo(Request $request)

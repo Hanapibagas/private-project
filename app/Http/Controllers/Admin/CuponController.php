@@ -25,17 +25,23 @@ class CuponController extends Controller
 
     public function store_cupon(Request $request)
     {
-        // $user = User::all();
+        $message = [
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+        ];
 
-        // Coupon::create([
-        //     'user_id' => $request->input('user_id'),
-        //     'coupon_code' => $request->input('coupon_code'),
-        //     'description' => $request->input('description'),
-        //     'expired' => $request->input('expired'),
-        //     'status' => $request->input('status'),
-        //     'discount' => $request->input('discount'),
-        // ]);
-        // Mail::to($user->email)->send(new KirimEmail($request->status, "Hello", $user->name));
+        $this->validate($request, [
+            'coupon_code' =>  'required',
+            'expired' =>  'required',
+            'status' =>  'required',
+            'discount' =>  'required',
+        ], $message);
+
+        Coupon::create([
+            'coupon_code' => $request->input('coupon_code'),
+            'expired' => $request->input('expired'),
+            'status' => $request->input('status'),
+            'discount' => $request->input('discount'),
+        ]);
 
         return redirect()->route('index_cupon')->with('status', 'Selamat data product berhasil ditambahkan');
     }
@@ -52,12 +58,12 @@ class CuponController extends Controller
         $data = $request->all();
 
         Coupon::findOrFail($id)->update($data);
-        return redirect()->route('index_cupon')->with('status', 'Selamat data product berhasil ditambahkan');
+        return redirect()->route('index_cupon')->with('status', 'Selamat kupon berhasil diubah');
     }
 
     public function destroy_cupon($id)
     {
         Coupon::findOrFail($id)->delete();
-        return response()->json(['status' => 'Selamat data category berhasil dihapus']);
+        return response()->json(['status' => 'Selamat data kupon berhasil dihapus']);
     }
 }

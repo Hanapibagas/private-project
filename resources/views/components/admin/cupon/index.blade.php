@@ -24,7 +24,7 @@ Cupon
         <h1 class="h3 mb-0 text-gray-800">Daftar kupon yang tersedia</h1>
         <a href="{{ route('create_cupon') }}" class="btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-plus fa-sm text-white-50"></i>
-            Tambah
+            Tambah data kupon
         </a>
     </div>
     <div class="row">
@@ -34,9 +34,8 @@ Cupon
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama</th>
-                            <th>Kode Kupon</th>
-                            <th>Keterangan</th>
+                            <th>Nama kupon ang memiliki</th>
+                            <th>Kode kupon</th>
                             <th>Diskon</th>
                             <th>Expired</th>
                             <th>Status</th>
@@ -49,7 +48,6 @@ Cupon
                             <th scope="row">{{ $key+1 }}</th>
                             <td>{{ $files->user_id ? $files->User->name : 'Kupon ini dapat digunakan semua cstr' }}</td>
                             <th>{{ $files->coupon_code }}</th>
-                            <th>{{ $files->description }}</th>
                             <th>{{ $files->discount }}%</th>
                             <th>{{ date('d-m-Y', strtotime($files->expired)) }}</th>
                             <th>

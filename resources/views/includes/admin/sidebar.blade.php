@@ -11,7 +11,9 @@
     <hr class="sidebar-divider">
 
     <li
-        class="nav-item {{ request()->is('category') || request()->is('riview') || request()->is('riview/details/*') || request()->is('category') || request()->is('category/update/*') || request()->is('category/create') ? 'active' : '' }} || request()->is('coupon') || request()->is('coupon/edit/*') || request()->is('coupon/create') || request()->is('product') || request()->is('product/edit/*') || request()->is('product/create') || request()->is('category/create') ? 'active' : '' }}">
+        class="nav-item {{ request()->is('category') || request()->is('riview') || request()->is('riview/details/*') || request()->is('category') || request()->is('category/update/*') ||
+            request()->is('category/create') || request()->is('coupon') || request()->is('coupon/edit/*') || request()->is('coupon/create') || request()->is('product')
+            || request()->is('product/edit/*') || request()->is('product/create') || request()->is('category/create') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>

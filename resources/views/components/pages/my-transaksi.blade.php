@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+@if (session('status'))
+<script>
+    Swal.fire({
+                icon: 'success',
+                title: 'Sukses!',
+                text: "{{ session('status') }}",
+            });
+</script>
+@endif
 <div class="page-content page-cart">
     <section class="store-breadcrumbs" data-aos="fade-down" data-aos-delay="100">
         <div class="container">
