@@ -19,31 +19,39 @@ class ProductCotroller extends Controller
 
     public function create_product()
     {
-        $category = ProductCategory::all();
-        return view('components.admin.product.create', compact('category'));
+        $categories = ProductCategory::all();
+        return view('components.admin.product.create', compact('categories'));
     }
 
-    public function store_product(ProductRequest $request)
+    public function store_product(Request $request)
     {
-        $data = $request->all();
+        $message = [
+            'required' => 'Mohon maaf anda lupa untuk mengisi ini dan harap anda mangisi terlebih dahulu'
+        ];
 
-        // Upload foto
-        $photoPath = $request->file('photo')->store('photos');
+        $this->validate($request, [
+            'photo' => 'required',
+            'name' => 'required',
+            'deskripsi' => 'required',
+            'selling_price' => 'required',
+            'purchase_price' => 'required',
+            'stock' => 'required',
+        ], $message);
 
-        // Simpan data produk
-        $product = new Product;
-        $product->photo = $photoPath;
-        $product->category_id = $request->category_id;
-        $product->product_code = $request->product_code;
-        $product->name = $request->name;
-        $product->stock = $request->stock;
-        $product->purchase_price = str_replace(',', '', $data['purchase_price']);
-        $product->selling_price = str_replace(',', '', $data['selling_price']);
-        $product->deskripsi = $request->deskripsi;
-        $product->save();
+        if ($request->file('photo')) {
+            $file = $request->file('photo')->store('photo-product', 'public');
+        }
 
-
-        dd($request->all());
+        Product::create([
+            'photo' => $file,
+            'name' => $request->input('name'),
+            'deskripsi' => $request->input('deskripsi'),
+            'selling_price' => str_replace(',', '', $request['purchase_price']),
+            'purchase_price' => str_replace(',', '', $request['selling_price']),
+            'stock' => $request->input('stock'),
+            'product_code' => $request->input('product_code'),
+            'category_id' => $request->input('category_id'),
+        ]);
 
         return redirect()->route('index_product')->with('status', 'Selamat data product berhasil ditambahkan');
     }

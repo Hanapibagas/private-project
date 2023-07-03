@@ -47,10 +47,10 @@ Transaksi
                                 </span>
                             </th>
                             <th>
-                                <a href="{{ route('details_tranaksi', $items->transaction_code) }}"
+                                {{-- <a href="{{ route('details_tranaksi', $items->transaction_code) }}"
                                     class="btn btn-info">
                                     <i class="fa fa-eye"></i>
-                                </a>
+                                </a> --}}
                             </th>
                         </tr>
                         @endforeach

@@ -67,7 +67,6 @@ Store Details Page
                         <div class="col-lg-8">
                             <h1>{{ $product->name }} </h1>
                             <div class="price">${{ number_format($product->selling_price) }}</div>
-                            <p>{{ $product->product_code }}</p>
                         </div>
                         <div class="col-lg-2" data-aos="zoom-in">
                             <p>Stok : {{ $product->stock }}</p>

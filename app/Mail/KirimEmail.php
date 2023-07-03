@@ -14,18 +14,18 @@ class KirimEmail extends Mailable
     use Queueable, SerializesModels;
 
     public $status;
-    public $nama;
+    public $nama_lenkap;
 
-    public function __construct(string $status, string $nama)
+    public function __construct(string $status, string $nama_lenkap)
     {
         $this->status = $status;
-        $this->nama = $nama;
+        $this->nama_lenkap = $nama_lenkap;
     }
 
     public function build()
     {
         $status = $this->status;
-        $nama = $this->nama;
+        $nama = $this->nama_lenkap;
         return $this->subject('Coupon anda', $status)->markdown('components.admin.cupon.send-coupon', compact('status', 'nama'));
     }
 }

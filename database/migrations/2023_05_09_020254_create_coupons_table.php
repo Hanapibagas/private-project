@@ -15,12 +15,16 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('coupon_code');
-            $table->string('description');
-            $table->date('expired');
-            $table->integer('status');
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->integer('discount');
+
+            $table->string('coupon_code');
+            $table->string('description')->nullable();
+            $table->date('expired')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }

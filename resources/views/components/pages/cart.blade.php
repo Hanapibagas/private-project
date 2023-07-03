@@ -109,7 +109,7 @@ Store Cart Page
                             <div class="input-group mb-3">
                                 <select class="form-control" name="coupon_code">
                                     <option value="">-- Silahkan pilih --</option>
-                                    @foreach ( $kupon as $kupons )
+                                    @foreach ( $coupons as $kupons )
                                     <option value="{{ $kupons->coupon_code }}">{{ $kupons->coupon_code }}
                                     </option>
                                     @endforeach

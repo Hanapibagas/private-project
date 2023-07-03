@@ -47,7 +47,7 @@ Cupon
                         @foreach ( $cupon as $key => $files )
                         <tr>
                             <th scope="row">{{ $key+1 }}</th>
-                            <th>{{ $files->User->name }}</th>
+                            <td>{{ $files->user_id ? $files->User->name : 'Kupon ini dapat digunakan semua cstr' }}</td>
                             <th>{{ $files->coupon_code }}</th>
                             <th>{{ $files->description }}</th>
                             <th>{{ $files->discount }}%</th>

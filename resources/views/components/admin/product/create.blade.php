@@ -11,165 +11,6 @@ Product
     </div>
     <div class="card shadow">
         <div class="card-body">
-            {{-- <form action="{{ route('store_product') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="card-body">
-
-                    @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger alert-dismissible show fade">
-                        <div class="alert-body">
-                            <button class="close" data-dismiss="alert">
-                                <span>×</span>
-                            </button>
-                            {{ $error }}
-                        </div>
-                    </div>
-                    @endforeach
-                    @endif
-
-                    <div class="row">
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <label for="">Pratinjau Foto</label>
-                                <img src="{{ url('assets/backend/img/image_not_available.png') }}"
-                                    class="rounded img-responsive" alt="Image Preview" width="100%" id="img-preview">
-                            </div>
-                            <div class="form-group">
-                                <label class="float-right">
-                                    <a href="#" data-toggle="tooltip"
-                                        title="Klik untuk menghapus foto yang sudah dipilih" style="display:none"
-                                        id="img-reset">
-                                        <code class="text-right">Hapus Foto</code>
-                                    </a>
-                                </label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-file-image"></i>
-                                        </div>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="photo" id="img-file">
-                                        <label class="custom-file-label" id="img-name">Pilih Foto</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label>Kode Produk</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-key"></i>
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control @error('product_code') is-invalid @enderror"
-                                        name="product_code" value="{{ old('product_code') }}">
-                                    @error('product_code')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Nama</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Kategori <br />
-                                    @if ($category->isEmpty())
-                                    <code>Belum ada kategori klik <a href="{{ route('create_cataegory') }}">disini</a> untuk menambah kategori.</code>
-                                    @endif
-                                </label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-tag"></i>
-                                        </div>
-                                    </div>
-                                    <select class="form-control @error('category_id') is-invalid @enderror"
-                                        name="category_id">
-                                        @foreach ($category as $category)
-                                        <option value="">-- Silahkan Pilih --</option>
-                                        <option value="{{ $category->id }}">
-                                            {{ $category->name }}
-                                        </option>
-                                        @error('category_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-5">
-                            <div class="form-group">
-                                <label>Stok</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-layer-group"></i>
-                                        </div>
-                                    </div>
-                                    <input type="number" class="form-control currency" name="stock">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>
-                                    Harga Beli
-                                </label>
-
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <b>Rp</b>
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control currency" name="purchase_price">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>
-                                    Harga Jual
-                                </label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <b>Rp</b>
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control currency" name="selling_price">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-10 offset-2">
-                            <div class="form-group">
-                                <label>Deskripsi</label>
-                                <textarea class="form-control" name="deskripsi"></textarea>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="card-footer text-right">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form> --}}
             <form action="{{ route('store_product') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
@@ -195,7 +36,8 @@ Product
                                         </div>
                                     </div>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="photo" id="img-file">
+                                        <input type="file" class="custom-file-input" name="photo" id="img-file"
+                                            required>
                                         <label class="custom-file-label" id="img-name">Pilih Foto</label>
                                     </div>
                                 </div>
@@ -210,10 +52,10 @@ Product
                                             <i class="fas fa-tag"></i>
                                         </div>
                                     </div>
-                                    <select class="form-control" name="category_id" id="category-select">
+                                    <select class="form-control" name="category_id" id="category-select" required>
                                         <option value="">-- Silahkan Pilih --</option>
-                                        @foreach ($category as $category)
-                                        <option value="{{ $category->name }}">
+                                        @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" data-name="{{ $category->name }}">
                                             {{ $category->name }}
                                         </option>
                                         @endforeach
@@ -240,7 +82,13 @@ Product
                                             <i class="fas fa-pencil-alt"></i>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        name="name">
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -253,7 +101,13 @@ Product
                                             <i class="fas fa-layer-group"></i>
                                         </div>
                                     </div>
-                                    <input type="number" class="form-control currency" name="stock">
+                                    <input type="number"
+                                        class="form-control currency @error('stock') is-invalid @enderror" name="stock">
+                                    @error('stock')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
@@ -266,7 +120,14 @@ Product
                                             <b>Rp</b>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control currency" name="purchase_price">
+                                    <input type="text"
+                                        class="form-control currency @error('purchase_price') is-invalid @enderror"
+                                        name="purchase_price">
+                                    @error('purchase_price')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
@@ -279,7 +140,14 @@ Product
                                             <b>Rp</b>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control currency" name="selling_price">
+                                    <input type="text"
+                                        class="form-control currency @error('selling_price') is-invalid @enderror"
+                                        name="selling_price">
+                                    @error('selling_price')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -301,6 +169,7 @@ Product
 @endsection
 
 @push('script')
+</script>
 <script src="{{ url('assets/backend/js/cleave.min.js') }}"></script>
 <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
 <script>
@@ -310,31 +179,33 @@ Product
 <script src="{{ url('assets/backend/js/my_cleave.js') }}"></script>
 <script>
     $(document).ready(function () {
-        // Event listener ketika kategori dipilih
         $('#category-select').on('change', function () {
             var category = $(this).val();
             var codeInput = $('#product-code-input');
-
-            // Mengambil singkatan dari kategori
             var abbreviation = getAbbreviation(category);
 
-            // Mengisi input kode produk dengan singkatan kategori
             codeInput.val(abbreviation);
         });
 
-        // Fungsi untuk mendapatkan singkatan dari kategori
         function getAbbreviation(category) {
-            var words = category.split(' ');
+            var categories = {!! $categories !!};
             var abbreviation = '';
 
-            // Mengambil inisial dari setiap kata
-            for (var i = 0; i < words.length; i++) {
-                abbreviation += words[i].charAt(0);
+            for (var i = 0; i < categories.length; i++) {
+                if (categories[i].id == category) {
+                    var categoryName = categories[i].name;
+                    var words = categoryName.split(' ');
+
+                    for (var j = 0; j < words.length; j++) {
+                        abbreviation += words[j].charAt(0);
+                    }
+
+                    break;
+                }
             }
 
             return abbreviation.toUpperCase();
         }
     });
 </script>
-
 @endpush

@@ -34,14 +34,17 @@ class ProductController extends Controller
     public function getCart()
     {
         $user = Auth::id();
-        $kupon = Coupon::all();
+
+        $coupons = Coupon::where('user_id', $user)
+            ->orWhere('user_id', null)
+            ->get();
 
         $data = Cart::where('user_id', $user)->get();
         $subTotal = $data->sum('total_price');
 
         $transaksi = Transaction::where('user_id', $user)->get();
 
-        return view('components.pages.cart', compact('data', 'kupon', 'transaksi', 'subTotal'));
+        return view('components.pages.cart', compact('data', 'coupons', 'transaksi', 'subTotal'));
     }
 
     public function storeCart($id)
@@ -49,7 +52,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $selling_price = $product->selling_price;
 
-        $duplicate = Cart::where('product_id', $id)->first();
+        $duplicate = Cart::where('user_id', $id)->first();
 
         if ($duplicate) {
             return redirect()->back()->with('warning', 'Barang yang anda pilih sudah dalam keranjang');
@@ -172,12 +175,12 @@ class ProductController extends Controller
         $coupons = Coupon::where('coupon_code', $couponCode)->get();
 
         foreach ($coupons as $coupon) {
-            if (Carbon::create($coupon->expired) < Carbon::now()) {
+            if ($coupon->expired !== null && Carbon::create($coupon->expired) < Carbon::now()) {
                 return redirect()->back()
                     ->withErrors(['coupon_invalid' => 'Kupon sudah tidak berlaku.']);
             }
 
-            if ($coupon->status == 0) {
+            if ($coupon->status == 0 && $coupon->expired !== null) {
                 return redirect()->back()
                     ->withErrors(['coupon_invalid' => 'Kupon tidak aktif.']);
             }

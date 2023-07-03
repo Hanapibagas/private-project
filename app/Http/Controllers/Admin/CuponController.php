@@ -25,17 +25,17 @@ class CuponController extends Controller
 
     public function store_cupon(Request $request)
     {
-        $user = User::find($request->input('user_id'));
+        // $user = User::all();
 
-        Coupon::create([
-            'user_id' => $request->input('user_id'),
-            'coupon_code' => $request->input('coupon_code'),
-            'description' => $request->input('description'),
-            'expired' => $request->input('expired'),
-            'status' => $request->input('status'),
-            'discount' => $request->input('discount'),
-        ]);
-        Mail::to($user->email)->send(new KirimEmail($request->status, "Hello", $user->name));
+        // Coupon::create([
+        //     'user_id' => $request->input('user_id'),
+        //     'coupon_code' => $request->input('coupon_code'),
+        //     'description' => $request->input('description'),
+        //     'expired' => $request->input('expired'),
+        //     'status' => $request->input('status'),
+        //     'discount' => $request->input('discount'),
+        // ]);
+        // Mail::to($user->email)->send(new KirimEmail($request->status, "Hello", $user->name));
 
         return redirect()->route('index_cupon')->with('status', 'Selamat data product berhasil ditambahkan');
     }

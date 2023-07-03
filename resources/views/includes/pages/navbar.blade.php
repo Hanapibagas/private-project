@@ -20,7 +20,8 @@
                 </li>
                 @php
                 use App\Models\Cart;
-                $total = Cart::count();
+                $user= Auth::id();
+                $total = Cart::where('user_id', $user)->count();
                 @endphp
                 <li class="nav-item {{ request()->is('my-cart') ? 'active' : '' }}">
                     <a href="{{ route('getCart') }}" class="nav-link">
