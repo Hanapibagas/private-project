@@ -54,10 +54,6 @@ class ProductController extends Controller
 
         $duplicate = Cart::where('user_id', $id)->first();
 
-        if ($duplicate) {
-            return redirect()->back()->with('warning', 'Barang yang anda pilih sudah dalam keranjang');
-        }
-
         $previous_stock = $product->stock;
 
         $cart = Cart::create([
@@ -136,7 +132,7 @@ class ProductController extends Controller
             $file = $request->file('foto')->store('bukti-pembayaran', 'public');
         }
 
-        $transaksi = Transaction::create([
+        $transaction = Transaction::create([
             'user_id' => $user,
             'foto' => $file,
             'nama_lengkap' => $request->input('nama_lengkap'),
@@ -153,12 +149,22 @@ class ProductController extends Controller
 
         foreach ($cartItems as $cartItem) {
             $detailTransaksi = new DetailsTransaksi();
-            $detailTransaksi->transaksi_id = $transaksi->id;
+            $detailTransaksi->order_date = date('Y-m-d');
             $detailTransaksi->product_id = $cartItem->product_id;
-            $detailTransaksi->jumlah = $cartItem->total_price;
+            $detailTransaksi->jumlah_barang = $cartItem->quantity;
+
+            $product = Product::find($cartItem->product_id);
+            $sellingPrice = $product->selling_price * $cartItem->quantity;
+            $purchasePrice = $product->purchase_price * $cartItem->quantity;
+
+            $detailTransaksi->selling_price = $sellingPrice;
+            $detailTransaksi->purchase_price = $purchasePrice;
+            $detailTransaksi->profit = $sellingPrice - $purchasePrice;
+            $detailTransaksi->discount = $transaction->discount;
             $detailTransaksi->save();
-            $cartItem->delete();
         }
+
+        Cart::where('user_id', $user)->delete();
 
         return redirect()->route('get-index')->with('status', 'Selamat transaksi anda segera kami proses');
     }
