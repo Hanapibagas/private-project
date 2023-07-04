@@ -8,6 +8,25 @@
     <title>Rekap Data Laporan Pengadu</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <style>
+        /* CSS untuk tanda tangan */
+        .signature {
+            margin-top: 50px;
+            text-align: right;
+        }
+
+        .signature p {
+            margin-bottom: 0;
+        }
+
+        .signature .name {
+            font-weight: bold;
+        }
+
+        .signature .position {
+            font-style: italic;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,28 +34,33 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col">Transaksi kode</th>
+                <th scope="col">Tanggal order</th>
                 <th scope="col">Nama</th>
+                <th scope="col">Jumlah barang</th>
+                <th scope="col">Harga jual</th>
                 <th scope="col">Diskon</th>
-                <th scope="col">Total</th>
-                <th scope="col">Status</th>
+                <th scope="col">Harga beli</th>
+                <th scope="col">Untung</th>
+            </tr>
         </thead>
         <tbody>
-            @foreach ( $data as $items )
+            @foreach ( $detailsTransaksi as $items )
             <tr>
-                <th>{{ $items->transaction_code }}</th>
-                <th>{{ $items->user->name }}</th>
+                <th>{{ $items->order_date }}</th>
+                <th>{{ $items->Product->name }}</th>
+                <th>{{ $items->jumlah_barang }}</th>
+                <th>Rp.{{ number_format($items->selling_price) }}</th>
                 <th>{{ $items->discount }}%</th>
-                <th>{{ number_format($items->sub_total) }}</th>
-                <th>
-                    <span class="badge badge-{{ $items->status == 1 ? 'success' : 'secondary'}}">
-                        {{ $items->status == 1 ? 'Sudah di proses' : 'Sedang di proses'}}
-                    </span>
-                </th>
+                <th>Rp.{{ number_format($items->purchase_price) }}</th>
+                <th>Rp.{{ number_format($items->profit) }}</th>
             </tr>
             @endforeach
         </tbody>
     </table>
+    <div class="signature">
+        <p class="name">[Nama Penanggung Jawab]</p>
+        <p class="position">[Jabatan]</p>
+    </div>
 </body>
 
 </html>

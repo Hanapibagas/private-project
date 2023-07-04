@@ -94,5 +94,5 @@ Route::middleware('auth', 'checkroll:owner')->group(function () {
     Route::get('/dashboard-owner', [OwnerDashboardController::class, 'getIndex'])->name('dashboard-owner');
     //
     Route::get('/transaksi-owner', [TransaksiOwnerController::class, 'getIndex'])->name('index-owner');
-    Route::get('/transaksi-owner/exportPDF', [TransaksiOwnerController::class, 'getExportPDF'])->name('getExportPDF');
+    Route::post('/transaksi-owner/exportPDF', [TransaksiOwnerController::class, 'getExportPDF'])->name('getExportPDF');
 });

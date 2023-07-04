@@ -22,10 +22,30 @@ Transaksi
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar transaksi</h1>
-        <a href="{{ route('getExportPDF') }}" target="_blank" class="btn btn-sm btn-danger shadow-sm">
+        <form action="{{ route('getExportPDF') }}" method="POST" target="_blank">
+            @csrf
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label class="col-form-label">Dari</label>
+                </div>
+                <div class="col-auto">
+                    <input type="date" class="form-control" name="dari" required>
+                </div>
+                <div class="col-auto">
+                    Ke
+                </div>
+                <div class="col-auto">
+                    <input type="date" class="form-control" name="ke" required>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-danger" type="submit">Print PDF</button>
+                </div>
+            </div>
+        </form>
+        {{-- <a href="{{ route('getExportPDF') }}" target="_blank" class="btn btn-sm btn-danger shadow-sm">
             <i class="fas fa-download fa-sm text-white-50"></i>
             Download PDF
-        </a>
+        </a> --}}
     </div>
     <div class="row">
         <div class="card-body">
@@ -33,35 +53,27 @@ Transaksi
                 <table id="myTable" class="table table-stripped">
                     <thead>
                         <tr>
-                            <th scope="col">Transaksi kode</th>
+                            <th scope="col">Tanggal order</th>
                             <th scope="col">Nama</th>
+                            <th scope="col">Jumlah barang</th>
+                            <th scope="col">Harga jual</th>
                             <th scope="col">Diskon</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col">Harga beli</th>
+                            <th scope="col">Untung</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ( $transaksi as $items )
                         <tr>
-                            <th>{{ $items->transaction_code }}</th>
-                            <th>{{ $items->user->name }}</th>
+                            <th>{{ $items->order_date }}</th>
+                            <th>{{ $items->Product->name }}</th>
+                            <th>{{ $items->jumlah_barang }}</th>
+                            <th>Rp.{{ number_format($items->selling_price) }}</th>
                             <th>{{ $items->discount }}%</th>
-                            <th>{{ number_format($items->sub_total) }}</th>
-                            <th>
-                                <span class="badge badge-{{ $items->status == 1 ? 'success' : 'secondary'}}">
-                                    {{ $items->status == 1 ? 'Sudah di proses' : 'Sedang di proses'}}
-                                </span>
-                            </th>
-                            <th>
-                                {{-- <a href="{{ route('details_tranaksi', $items->transaction_code) }}"
-                                    class="btn btn-info">
-                                    <i class="fa fa-eye"></i>
-                                </a> --}}
-                            </th>
+                            <th>Rp.{{ number_format($items->purchase_price) }}</th>
+                            <th>Rp.{{ number_format($items->profit) }}</th>
                         </tr>
                         @endforeach
-                    </tbody>
                     </tbody>
                 </table>
             </div>
