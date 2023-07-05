@@ -15,22 +15,7 @@ Product
                 @method('PUT')
                 @csrf
                 <div class="card-body">
-
-                    @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger alert-dismissible show fade">
-                        <div class="alert-body">
-                            <button class="close" data-dismiss="alert">
-                                <span>×</span>
-                            </button>
-                            {{ $error }}
-                        </div>
-                    </div>
-                    @endforeach
-                    @endif
-
                     <div class="row">
-
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label for="">Pratinjau Foto</label>
@@ -39,7 +24,6 @@ Product
                                     id="img-preview">
                             </div>
                             <div class="form-group">
-                                <label>Foto</label>
                                 <label class="float-right">
                                     <a href="#" data-toggle="tooltip"
                                         title="Klik untuk menghapus foto yang sudah dipilih" style="display:none"
@@ -54,37 +38,14 @@ Product
                                         </div>
                                     </div>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="photo" id="img-file">
+                                        <input type="file" class="custom-file-input" name="photo" id="img-file"
+                                            required>
                                         <label class="custom-file-label" id="img-name">Pilih Foto</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-lg-5">
-                            <div class="form-group">
-                                <label>Kode Produk</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-key"></i>
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control" name="product_code"
-                                        value="{{ $product->product_code }}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Nama</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </div>
-                                    </div>
-                                    <input type="text" class="form-control" name="name" value="{{ $product->name }}">
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label>Kategori</label>
                                 <div class="input-group">
@@ -93,19 +54,46 @@ Product
                                             <i class="fas fa-tag"></i>
                                         </div>
                                     </div>
-                                    <select class="form-control" name="category_id">
-                                        @foreach ($category as $category)
-                                        <option value="">{{ $category->name }}</option>
-                                        <option value="">-- Silahkan Ubah --</option>
-                                        <option value="{{ $category->id }}">
+                                    <select class="form-control" name="category_id" id="category-select" required>
+                                        <option value="">-- Silahkan Pilih --</option>
+                                        @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" data-name="{{ $category->name }}">
                                             {{ $category->name }}
                                         </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label>Kode Produk</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-key"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" name="product_code" id="product-code-input"
+                                        readonly>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <label>Nama</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" value="{{ $product->name }}"
+                                        class="form-control @error('name') is-invalid @enderror" name="name">
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-
                         <div class="col-lg-5">
                             <div class="form-group">
                                 <label>Stok</label>
@@ -115,23 +103,33 @@ Product
                                             <i class="fas fa-layer-group"></i>
                                         </div>
                                     </div>
-                                    <input type="number" class="form-control currency" name="stock"
-                                        value="{{ $product->stock }}">
+                                    <input type="number" value="{{ $product->stock }}"
+                                        class="form-control currency @error('stock') is-invalid @enderror" name="stock">
+                                    @error('stock')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>
                                     Harga Beli
                                 </label>
-
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <b>Rp</b>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control currency" name="purchase_price"
-                                        value="{{ $product->purchase_price }}">
+                                    <input type="text" value="{{ $product->purchase_price }}"
+                                        class="form-control currency @error('purchase_price') is-invalid @enderror"
+                                        name="purchase_price">
+                                    @error('purchase_price')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
@@ -144,19 +142,23 @@ Product
                                             <b>Rp</b>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control currency" name="selling_price"
-                                        value="{{ $product->selling_price }}">
+                                    <input type="text" value="{{ $product->selling_price }}"
+                                        class="form-control currency @error('selling_price') is-invalid @enderror"
+                                        name="selling_price">
+                                    @error('selling_price')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-lg-10 offset-2">
                             <div class="form-group">
                                 <label>Deskripsi</label>
                                 <textarea class="form-control" name="deskripsi">{!! $product->deskripsi !!}</textarea>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="card-footer text-right">
@@ -169,9 +171,43 @@ Product
 @endsection
 
 @push('script')
+</script>
+<script src="{{ url('assets/backend/js/cleave.min.js') }}"></script>
 <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('deskripsi');
 </script>
 <script src="{{ url('assets/backend/js/image_upload.js') }}"></script>
+<script src="{{ url('assets/backend/js/my_cleave.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $('#category-select').on('change', function () {
+            var category = $(this).val();
+            var codeInput = $('#product-code-input');
+            var abbreviation = getAbbreviation(category);
+
+            codeInput.val(abbreviation);
+        });
+
+        function getAbbreviation(category) {
+            var categories = {!! $categories !!};
+            var abbreviation = '';
+
+            for (var i = 0; i < categories.length; i++) {
+                if (categories[i].id == category) {
+                    var categoryName = categories[i].name;
+                    var words = categoryName.split(' ');
+
+                    for (var j = 0; j < words.length; j++) {
+                        abbreviation += words[j].charAt(0);
+                    }
+
+                    break;
+                }
+            }
+
+            return abbreviation.toUpperCase();
+        }
+    });
+</script>
 @endpush

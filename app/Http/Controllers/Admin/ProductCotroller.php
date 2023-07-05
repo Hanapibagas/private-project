@@ -59,8 +59,8 @@ class ProductCotroller extends Controller
     public function edit_product(Request $request, $id)
     {
         $product = Product::where('id', $id)->first();
-        $category = ProductCategory::all();
-        return view('components.admin.product.update', compact('product', 'category'));
+        $categories = ProductCategory::all();
+        return view('components.admin.product.update', compact('product', 'categories'));
     }
 
     public function update_product(ProductRequest $request, $id)
