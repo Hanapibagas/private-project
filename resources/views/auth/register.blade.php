@@ -17,14 +17,21 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<style>
+    .bg-gradient {
+        background-color: pink;
+    }
+</style>
+
+<body class="bg-gradient">
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-block">
-                        <img style="margin-top: 80px; margin-left: 110px;"
-                            src="{{ asset('assets/backend/img/Asset-2@1080x-243x300.png') }}" alt="">
+                        <img style="margin-top: 80px; margin-left: 110px; width: 250px"
+                            src="{{ asset('assets/frontend/images/74687588_1006205726396922_8513876472149049344_n.jpg') }}"
+                            alt="">
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">

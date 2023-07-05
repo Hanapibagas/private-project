@@ -16,7 +16,13 @@
     <link href="{{ asset('assets/backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-primary">
+<style>
+    .bg-gradient {
+        background-color: pink;
+    }
+</style>
+
+<body class="bg-gradient">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-9">
@@ -24,8 +30,9 @@
                     <div class="card-body p-0">
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block">
-                                <img style="margin-top: 80px; margin-left: 110px;"
-                                    src="{{ asset('assets/backend/img/Asset-2@1080x-243x300.png') }}" alt="">
+                                <img style="margin-top: 80px; margin-left: 110px; width: 250px"
+                                    src="{{ asset('assets/frontend/images/74687588_1006205726396922_8513876472149049344_n.jpg') }}"
+                                    alt="">
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">

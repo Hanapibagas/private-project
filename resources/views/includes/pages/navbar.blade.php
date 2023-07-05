@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top navbar-fixed-top" data-aos="fade-down">
     <div class="container">
-        <a href="" class=" navbar-brand">
-            <img src="{{ asset('assets/frontend/images/logo.svg') }}" alt="Logo" />
-        </a>
+        <img src="{{ asset('assets/frontend/images/74687588_1006205726396922_8513876472149049344_n.jpg') }}"
+            style="width: 70px; border-radius: 40px" alt="Logo" />
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
