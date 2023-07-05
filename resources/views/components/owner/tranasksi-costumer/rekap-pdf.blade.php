@@ -55,11 +55,18 @@
                 <th>Rp.{{ number_format($items->profit) }}</th>
             </tr>
             @endforeach
+            <tr>
+                <th colspan="3" style="text-align: center">Total penjualan</th>
+                <th>Rp.{{ number_format($total) }}</th>
+                <th></th>
+                <th>Rp.{{ number_format($purchase_price) }}</th>
+                <th>Rp.{{ number_format($profit) }}</th>
+            </tr>
         </tbody>
     </table>
     <div class="signature">
-        <p class="name">[Nama Penanggung Jawab]</p>
-        <p class="position">[Jabatan]</p>
+        <p class="name">Penanggung jawab</p><br><br><br>
+        <p class="position">Admin</p>
     </div>
 </body>
 

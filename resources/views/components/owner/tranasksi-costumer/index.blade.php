@@ -42,10 +42,6 @@ Transaksi
                 </div>
             </div>
         </form>
-        {{-- <a href="{{ route('getExportPDF') }}" target="_blank" class="btn btn-sm btn-danger shadow-sm">
-            <i class="fas fa-download fa-sm text-white-50"></i>
-            Download PDF
-        </a> --}}
     </div>
     <div class="row">
         <div class="card-body">
